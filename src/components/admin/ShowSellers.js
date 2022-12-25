@@ -1,7 +1,7 @@
 import  { useEffect, useState, useContext } from "react"
 import { GlobalState } from "../../GlobalState"
 import axios from 'axios'
-import { DataGrid } from "@material-ui/data-grid"
+
 import { Link } from "react-router-dom"
 
 
@@ -36,43 +36,51 @@ function ShowSellers() {
     }, [toke, isAdmin])
 
 
-    const cols = [
-        { field: 'id', headerName: 'ID', width: 300, renderCell: (id) => {
-            return <Link to={`/user/${id.value}`}>`${id.value}`</Link>
-        } },
+    
+    return(<div >
+        <h1 className="text-center text-blue-600">VENDORS</h1>
+
+        <table className="table-auto md:table-auto">
+        <thead>
+          <tr>
+            <th>username</th>
+            <th>fullname</th>
+            <th>email</th>
+            <th>location</th>
+          </tr>
+        </thead>
+        <tbody>
         {
-            field: "fullname",
-            headerName: 'Fullname',
-            width: 150
-        }
-    ]
+            vendors.map((vendor, index) => {
+                return <tr key={index}>
+                    <td style={{
+                    padding: "10px",
+                    border: "1px solid black",
+                    color: "blue",
+                  }}><Link to={`/user/${vendor._id}`}>{vendor.username}</Link></td>
+                  <td style={{ padding: "10px", border: "1px solid black" }}>
+                  {vendor.fullname}
+                </td>
+                <td style={{ padding: "10px", border: "1px solid black" }}>
+                  {vendor.email}
+                </td>
+                <td style={{ padding: "10px", border: "1px solid black" }}>
+                  {vendor.location}
+                </td>
 
-    const rowData = vendors?.map(vendor => {
-        return{
-            fullname: vendor?.username,
-            id: vendor?._id
-        }
-        
+
+                </tr>
+
             })
-        
+        }
+
+        </tbody>
+
+
+
+        </table>
 
     
-    
-
-
-    
-    return(<div style={{width: "100%", height: 400}} >
-
-    <DataGrid 
-    
-    rows={rowData}
-    columns={cols}
-    pageSize={5}
-    rowsPerPageOptions={[5]}
-    
-    
-    />
-
     </div>
     )
 }

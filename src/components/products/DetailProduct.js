@@ -65,6 +65,7 @@ function  DetailProduct() {
     <>
     
     <div className="detail">
+    
 
 <img src={`data:image/jpg;base64, ${base64String}`}  alt={detailProduct.productName} />
 
