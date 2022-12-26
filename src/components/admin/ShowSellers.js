@@ -19,7 +19,7 @@ function ShowSellers() {
         const ShowSeller = async() => {
             if(isAdmin) {
     
-                const res = await axios.get('/auth/show_sellers', {
+                const res = await axios.get('https://newyoshopapi.onrender.com/auth/show_sellers', {
                     headers: {
                         Authorization: `Bearer ${toke}`
                     }

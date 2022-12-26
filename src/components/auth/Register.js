@@ -41,7 +41,7 @@ function Register() {
     formData.append('question', values.question)
     
     
-     const res =  await axios.post('/auth/register', formData)
+     const res =  await axios.post('https://newyoshopapi.onrender.com/auth/register', formData)
 
       localStorage.setItem('firstLogin', true)
 

@@ -15,7 +15,7 @@ function ShowUsers() {
   useEffect(() => {
     const showUsers = async () => {
       if (isAdmin) {
-        const res = await axios.get("/auth/show_users", {
+        const res = await axios.get("https://newyoshopapi.onrender.com/auth/show_users", {
           headers: {
             Authorization: `Bearer ${toke}`,
           },
@@ -28,53 +28,7 @@ function ShowUsers() {
     showUsers();
   }, [toke, isAdmin]);
 
-  //     const cols = [
-  //         { field: 'id', headerName: 'ID', width: 300, renderCell: (id) => {
-  //             return <Link to={`/user/${id.value}`}>`${id.value}`</Link>
-  //         }},
-
-  //         {
-  //             field: 'fullname',
-  //             headerName: 'Fullname',
-  //             width: 150,
-
-  //           },
-  //           {
-  //             field: 'username',
-  //             headerName: 'Username',
-  //             width: 150,
-
-  //           },
-  //           {
-  //             field: 'email',
-  //             headerName: 'Email',
-
-  //             width: 300,
-
-  //           },
-  //           {
-  //             field: 'location',
-  //             headerName: 'Location',
-
-  //             width: 150,
-
-  //           }
-
-  //     ]
-
-  //     const rowData = users?.map(user => {
-  // return{
-  //     fullname: user?.fullname,
-  //     username: user?.username,
-  //     email: user?.email,
-  //     location: user?.location,
-  //     id : user?._id
-  // }
-
-  //     })
-
-  // const rows = []
-
+  
   return (
 
     <div>

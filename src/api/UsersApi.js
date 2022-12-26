@@ -8,7 +8,7 @@ function UsersApi() {
     useEffect(() => {
 
         const showUsers = async() => {
-            const res = await axios.get('/auth/show_users')
+            const res = await axios.get('https://newyoshopapi.onrender.com/auth/show_users')
 
             setUsers(res.data.users)
 

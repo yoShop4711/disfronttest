@@ -15,7 +15,7 @@ function CanncelNotProcessedOrders() {
 
    useEffect(() => {
      const getNotProcessed = async () => {
-       const res = await axios.get("/cart/show_user_not_processed_carts", {
+       const res = await axios.get("https://newyoshopapi.onrender.com/cart/show_user_not_processed_carts", {
          headers: {
            Authorization: `Bearer ${token}`,
          },

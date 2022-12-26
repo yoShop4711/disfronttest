@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
 
-function UserApi(token) {
+function UserApi() {
     const [isLogged, setIsLogged] = useState(false)
     const [isSeller, setIsSeller] = useState(false)
     const [isAdmin, setIsadmin] = useState(false)
     const[isBuyer, setIsbuyer] = useState(false)
     const [owner, setOwner] = useState('')
     
+    let token = JSON.parse(JSON.stringify(localStorage.getItem('token')))
 
 
     useEffect(() => {
@@ -15,7 +16,7 @@ function UserApi(token) {
         if(token) {
             const getUser = async() => {
             try{
-                const res = await axios.get('/auth/user', {
+                const res = await axios.get('https://newyoshopapi.onrender.com/auth/user', {
                     headers: {Authorization: `Bearer ${token}`}
                 })
                 setIsLogged(true)

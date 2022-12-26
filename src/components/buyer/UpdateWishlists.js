@@ -25,7 +25,7 @@ function UpdateWishlists() {
 
         const updateWish = async() => {
 
-            const res = await axios.put(`/wish/update_wish/${id}`, {...values}, {
+            const res = await axios.put(`https://newyoshopapi.onrender.com/wish/update_wish/${id}`, {...values}, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }

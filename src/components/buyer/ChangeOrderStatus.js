@@ -12,13 +12,13 @@ function ChangeOrderStatus() {
   const[status, setStatus] = useState("")
   const[enam, setEnam] = useState([])
 
-  console.log(id);
+  
 
 
   useEffect(() => {
 
     const getEnam = async () => {
-      const res = await axios.get('/cart/show_status', {
+      const res = await axios.get('https://newyoshopapi.onrender.com/cart/show_status', {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -42,7 +42,7 @@ function ChangeOrderStatus() {
   
 
     const updateOrder = async() => {
-        const res = await axios.put(`/cart/update_status/${id}`, {status}, {
+        const res = await axios.put(`https://newyoshopapi.onrender.com/cart/update_status/${id}`, {status}, {
             headers: {
                 Authorization: `Bearer ${token}`
             }

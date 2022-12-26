@@ -21,7 +21,9 @@ function Login() {
   
       
 
-      const res = await axios.post('/auth/login', {...values} )
+      const res = await axios.post('https://newyoshopapi.onrender.com/auth/login', {...values} )
+      localStorage.setItem('token', res.data.accesstoken)
+
      
       
       if(res.data.msg) {
@@ -29,7 +31,7 @@ function Login() {
         alert(res.data.msg)
 
     } else  {
-        localStorage.setItem('firstLogin', true)
+        
         window.location.href = '/'
         
     }

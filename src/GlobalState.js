@@ -16,34 +16,34 @@ export const DataProvider = ({children}) => {
 const[token, setToken] = useState(false)
 
 
-useEffect(() => {
+// useEffect(() => {
 
-    const firstLogin = localStorage.getItem('firstLogin')
-    if(firstLogin) {
+//     const firstLogin = localStorage.getItem('firstLogin')
+//     if(firstLogin) {
 
-        const refreshToken = async () => {
-            const res = await axios.get('/auth/refresh_token', )
+//         const refreshToken = async () => {
+//             const res = await axios.get('https://newyoshopapi.onrender.com/auth/refresh_token', )
 
-            setToken(res.data.accesstoken)
-            localStorage.setItem('token', res.data.accesstoken)
-
-
-            setTimeout(() => {
-                refreshToken()
-            }, 10 * 60 * 1000)
-        }
-        refreshToken()
-    }
+//             setToken(res.data.accesstoken)
+//             localStorage.setItem('token', res.data.accesstoken)
 
 
+//             setTimeout(() => {
+//                 refreshToken()
+//             }, 10 * 60 * 1000)
+//         }
+//         refreshToken()
+//     }
 
-}, [])
+
+
+// }, [])
 
 
 
 const state = {
 
-    token: [token, setToken],
+
     userApi: UserApi(token),
     UsersApi: UsersApi(),
     CategoriesApi: CategoriesApi(),

@@ -23,7 +23,7 @@ function CreateCategory() {
 if(isAdmin) {
     if (onEdit) {
       const res = await axios.put(
-        `/api/update_category/${id}`,
+        `https://newyoshopapi.onrender.com/api/update_category/${id}`,
         { name},
         {
           headers: {
@@ -34,7 +34,7 @@ if(isAdmin) {
       alert(res.data.msg);
     } else {
       const res = await axios.post(
-        "/api/create_category", {name},
+        "https://newyoshopapi.onrender.com/api/create_category", {name},
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -61,7 +61,7 @@ if(isAdmin) {
 
   const deleteCategory = async (id) => {
     const res = await axios.delete(
-      `/api/delete_category/${id}`,
+      `https://newyoshopapi.onrender.com/api/delete_category/${id}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,

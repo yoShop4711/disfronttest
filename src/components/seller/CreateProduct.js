@@ -57,7 +57,7 @@ function CreateProduct() {
     
 
 
-           const res = await axios.post('/api/create_product',   formData , {
+           const res = await axios.post('https://newyoshopapi.onrender.com/api/create_product',   formData , {
             headers: { Authorization: `Bearer ${token}`}
         })
 

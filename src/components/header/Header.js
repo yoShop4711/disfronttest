@@ -18,23 +18,19 @@ function Header() {
   const [isBuyer] = state.userApi.isBuyer;
 
 
-  const tok = state.token[0];
+  // const tok = state.token[0];
 
   const [menu, setMenu] = useState(false);
 
   
 
   const logoutUser = async () => {
-    await axios.get("/auth/logout", {
-      headers: {
-        Authorization: `Bearer ${tok}`,
-      },
-    });
+    localStorage.removeItem('token')
 
-    localStorage.removeItem("firstLogin");
-    localStorage.removeItem("cart")
-
+     
     window.location.href = "/";
+
+  
   };
 
   const loggedRouter = () => {

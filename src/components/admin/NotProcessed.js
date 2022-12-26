@@ -13,7 +13,7 @@ function NotProcessed() {
 
         const getNotProcessed = async() => {
 
-            const res = await axios.get("/cart/show_not_processed", {
+            const res = await axios.get("https://newyoshopapi.onrender.com/cart/show_not_processed", {
                 headers: {
                     Authorization: `Bearer ${token}`
 

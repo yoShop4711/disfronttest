@@ -10,7 +10,7 @@ function Cancelled() {
     
     useEffect(() => {
         const getCancelled = async() => {
-            const res = await axios.get("/cart/show_cancelled", {
+            const res = await axios.get("https://newyoshopapi.onrender.com/cart/show_cancelled", {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }

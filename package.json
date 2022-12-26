@@ -46,7 +46,6 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://newyoshopapi.onrender.com",
   "devDependencies": {
     "tailwindcss": "^3.2.4"
   }
