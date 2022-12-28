@@ -8,7 +8,7 @@ import CancelledOrder from "./CancelledOrder"
 function CancelledOrders() {
      
    const state = useContext(GlobalState)
-   const[token] = state.token
+   const token = state.token
 
 
    const [cancelledOrders, setCancelledOrders] = useState([]);

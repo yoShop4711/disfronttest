@@ -11,13 +11,13 @@ function DeleteUser() {
     const state = useContext(GlobalState)
       
     
-    const toke = state.token[0]
+    const token = state.token
 
     const deleteUser = async() => {
         
          const res = await axios.delete(`https://newyoshopapi.onrender.com/auth/delete_user/${id}`, {
             headers: {
-                Authorization: `Bearer ${toke}`
+                Authorization: `Bearer ${token}`
             }
         })
 

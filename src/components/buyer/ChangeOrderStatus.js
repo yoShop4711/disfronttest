@@ -8,7 +8,7 @@ import "./createproduct.css"
 function ChangeOrderStatus() {
     const { id } = useParams();
   const state = useContext(GlobalState);
-  const[token] = state.token
+  const token  = state.token
   const[status, setStatus] = useState("")
   const[enam, setEnam] = useState([])
 

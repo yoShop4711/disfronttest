@@ -12,7 +12,7 @@ function ShowSellers() {
 
     const[isAdmin] = state.userApi.isAdmin
 
-    const toke = state.token[0]
+    const token = state.token
 
 
     useEffect(() => {
@@ -21,7 +21,7 @@ function ShowSellers() {
     
                 const res = await axios.get('https://newyoshopapi.onrender.com/auth/show_sellers', {
                     headers: {
-                        Authorization: `Bearer ${toke}`
+                        Authorization: `Bearer ${token}`
                     }
                 })
     
@@ -33,7 +33,7 @@ function ShowSellers() {
         ShowSeller()
     
 
-    }, [toke, isAdmin])
+    }, [token, isAdmin])
 
 
     

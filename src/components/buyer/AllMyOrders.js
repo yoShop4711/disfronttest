@@ -8,7 +8,7 @@ import MyOrders from "./MyOrders"
 function AllMyOrders() {
      
    const state = useContext(GlobalState)
-   const[token] = state.token
+   const token = state.token
 
 
    const [allOrders, setAllOrders] = useState([]);

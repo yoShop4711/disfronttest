@@ -10,13 +10,13 @@ function UserStatus() {
     const state = useContext(GlobalState)
 
     
-    const toke = state.token[0]
+    const token = state.token
 
             const changeStatus = async () => {
                 
                 const res = await axios.put(`/auth/change_role/${id}`, {role}, {
                     headers: {
-                        Authorization: `Bearer ${toke}`
+                        Authorization: `Bearer ${token}`
                     }
                 })
 

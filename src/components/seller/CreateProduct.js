@@ -6,6 +6,8 @@ import "./createproduct.css"
 function CreateProduct() {
     const state = useContext(GlobalState)
 
+    
+
 
     
     const [product, setProduct] = useState({
@@ -21,7 +23,9 @@ function CreateProduct() {
     
     const[categories] = state.CategoriesApi.categories   
     const [isSeller] = state.userApi.isSeller
-    const [token] = state.token
+    const token = state.token
+
+    
 
 
     const handleChangeInput = (event )=>{ 

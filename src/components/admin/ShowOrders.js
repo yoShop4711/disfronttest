@@ -7,7 +7,7 @@ function ShowOrders() {
 
 
   const state =  useContext(GlobalState)
-  const[token] = state.token
+  const token = state.token
   const[items, setItems] = useState([])
 
     useEffect(() => {

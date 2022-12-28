@@ -8,7 +8,7 @@ import ProcessingOrder from "./ProcessingOrder"
 function ProcessingOrders() {
      
    const state = useContext(GlobalState)
-   const[token] = state.token
+   const token = state.token
 
 
    const [processingOrders, setProcessingOrder] = useState([]);

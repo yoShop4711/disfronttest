@@ -13,13 +13,13 @@ function DeleteProduct() {
     const state = useContext(GlobalState)
 
     
-    const toke = state.token[0]
+    const token = state.token
 
     const deleteProduct = async() => {
         
          const res = await axios.delete(`https://newyoshopapi.onrender.com/api/delete_product/${id}`, {
             headers: {
-                Authorization: `Bearer ${toke}`
+                Authorization: `Bearer ${token}`
             }
         })
 

@@ -6,7 +6,7 @@ import './products.css'
 
 function AllWishlists() {
    const state = useContext(GlobalState)
-   const[token] = state.token
+   const token = state.token
   const[allWishlists, setAllWishlists] = useState([])
 
 

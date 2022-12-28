@@ -8,7 +8,7 @@ function SellerProducts() {
     const state = useContext(GlobalState)
 
     const[products, setProducts] = useState([])
-    const[token] = state.token
+    const token = state.token
 
     
 

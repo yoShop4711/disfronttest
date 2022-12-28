@@ -10,14 +10,16 @@ function ShowUsers() {
 
   const [isAdmin] = state.userApi.isAdmin;
 
-  const toke = state.token[0];
+  const token = state.token
+
+  
 
   useEffect(() => {
     const showUsers = async () => {
       if (isAdmin) {
         const res = await axios.get("https://newyoshopapi.onrender.com/auth/show_users", {
           headers: {
-            Authorization: `Bearer ${toke}`,
+            Authorization: `Bearer ${token}`,
           },
         });
 
@@ -26,13 +28,13 @@ function ShowUsers() {
     };
 
     showUsers();
-  }, [toke, isAdmin]);
+  }, [token, isAdmin]);
 
   
   return (
 
     <div>
-        <h1 className="text-center text-blue-600">SELLERS</h1>
+        <h1 className="text-center text-blue-600">USERS</h1>
       <table className="table-auto md:table-auto">
         <thead>
           <tr>

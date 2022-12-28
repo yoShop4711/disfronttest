@@ -12,7 +12,7 @@ function CreateWishlist() {
                   })
 
     const [isBuyer] = state.userApi.isBuyer   
-    const [token] = state.token
+    const token = state.token
 
     const handleChangeInput = (event )=>{ 
         if(event.target.name === "productImage") {

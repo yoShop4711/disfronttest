@@ -5,7 +5,7 @@ import DeliverTable from "./DeliverTable";
 
 function Delivered() {
   const state = useContext(GlobalState);
-  const [token] = state.token;
+  const token = state.token;
   const [deliVered, setDelivered] = useState([]);
 
   useEffect(() => {

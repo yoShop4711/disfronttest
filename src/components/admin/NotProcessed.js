@@ -6,7 +6,7 @@ import NotProcessedItem from "./NotProcessedItem";
 
 function NotProcessed() {
     const state = useContext(GlobalState)
-    const[token] = state.token
+    const token = state.token
     const[notProceSsed, setNotProcessed] = useState([])
 
     useEffect(() => {

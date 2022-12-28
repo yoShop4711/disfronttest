@@ -11,7 +11,7 @@ function FilterUsers() {
     const state = useContext(GlobalState)
     const[isAdmin] = state.userApi.isAdmin
 
-    const toke = state.token[0]
+    const token = state.token
 
 
     useEffect(() => {
@@ -20,7 +20,7 @@ function FilterUsers() {
     
                 const res = await axios.get('https://newyoshopapi.onrender.com/auth/show_users', {
                     headers: {
-                        Authorization: `Bearer ${toke}`
+                        Authorization: `Bearer ${token}`
                     }
                 })
     
@@ -32,7 +32,7 @@ function FilterUsers() {
         showUsers()
     
 
-    }, [toke, isAdmin])
+    }, [token, isAdmin])
 
 
     const handleChange = (event) => {

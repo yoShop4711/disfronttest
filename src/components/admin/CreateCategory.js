@@ -7,14 +7,14 @@ function CreateCategory() {
   const state = useContext(GlobalState);
   const [categories] = state.CategoriesApi.categories;
   const [name, setName] = useState("");
-  const token = state.token[0];
+  const token = state.token;
   const [callback, setCallback] = state.CategoriesApi.callback;
   const [onEdit, setOnEdit] = useState(false);
   const[isAdmin] = state.userApi.isAdmin
 
   const [id, setID] = useState("");
 
-// sconsole.log(state);
+//
 
   const createCategory = async (event) => {
     event.preventDefault();

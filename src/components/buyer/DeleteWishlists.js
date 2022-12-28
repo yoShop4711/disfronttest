@@ -6,7 +6,7 @@ import axios from "axios"
 
 function DeleteWishlists() {
     const state =  useContext(GlobalState)
-    const[token] = state.token
+    const token = state.token
     const {id} = useParams()
    const navigate = useNavigate
 

@@ -5,7 +5,7 @@ import CancelledItems from "./CancelledItems";
 
 function Cancelled() {
     const state = useContext(GlobalState)
-    const[token] = state.token
+    const token = state.token
     const[canceLled, setCancelled] = useState([])
     
     useEffect(() => {

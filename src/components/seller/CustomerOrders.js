@@ -6,7 +6,7 @@ import CustomerOrder from "./CustomerOrder"
 function CustomerOrders({product}) {
       
       const state =  useContext(GlobalState)
-      const [token] = state.token
+      const token = state.token
       const[resultOrders, setResultOrders] = useState([])
 
       

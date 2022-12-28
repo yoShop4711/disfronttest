@@ -12,7 +12,7 @@ function User() {
     const state = useContext(GlobalState)
     const[isAdmin] = state.userApi.isAdmin
 
-    const toke = state.token[0]
+    const token = state.token
 
 
     const {id} = useParams()
@@ -23,9 +23,9 @@ function User() {
         const showUsers = async() => {
         
     
-                const res = await axios.get('/auth/show_users', {
+                const res = await axios.get('https://newyoshopapi.onrender.com/auth/show_users', {
                     headers: {
-                        Authorization: `Bearer ${toke}`
+                        Authorization: `Bearer ${token}`
                     }
                 })
     
@@ -39,7 +39,7 @@ function User() {
         
 
         
-    }, [isAdmin, toke])
+    }, [isAdmin, token])
 
 
     useEffect(() => {

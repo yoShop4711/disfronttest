@@ -4,7 +4,7 @@ import axios from "axios"
 
 function Checkout({products}) {
    const state =   useContext(GlobalState)
-   const [token] = state.token
+   const token = state.token
 
   const getTotal = () => {
     return products.reduce((currentValue, nextValue) => {

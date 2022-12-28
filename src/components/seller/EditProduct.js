@@ -7,7 +7,7 @@ import "./editproduct.css"
 function EditProduct() {
   const { id } = useParams();
   const state = useContext(GlobalState);
-  const[token] = state.token
+  const token = state.token
   const [values, setValues] = useState({
     productName: "",
     productDescription: "",

@@ -6,7 +6,7 @@ import "./wishlists.css"
 
 function UpdateWishlists() {
    const state = useContext(GlobalState)
-   const [token] = state.token
+   const token = state.token
   const[values, setValues] =  useState({ productName: "", productDescription: ""})
 
      const {id} = useParams()

@@ -8,7 +8,7 @@ import NotProcessed from "./NotProcessed"
 function NotProcessedOrders() {
      
    const state = useContext(GlobalState)
-   const[token] = state.token
+   const token = state.token
 
 
    const [notProcessed, setNotProcessed] = useState([]);

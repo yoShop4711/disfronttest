@@ -7,7 +7,7 @@ import './products.css'
 function MyWishlists() {
 
    const state = useContext(GlobalState)
-   const[token] = state.token
+   const token = state.token
    const[wishlists, setWishlists] = useState([])
 
    useEffect(() => {
