@@ -1,7 +1,9 @@
 import { useState } from "react";
-import "./auth.css";
+// import "./auth.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { Container, Form, Row, Col, Button } from 'react-bootstrap';
+
 
 function Register() {
   const [values, setValues] = useState({
@@ -52,100 +54,75 @@ function Register() {
   }
 
   return (
-    <div className="login_page">
-      <h2>Register</h2>
+    <Container>
+    <Row className="justify-content-md-center">
+      <Col xs={12} md={6}>
+      <h1>Register An Account</h1>
+      <Form onSubmit={handleSubmit}>
+      <Form.Group className="mb-3" controlId="formBasicUserimage">
+        <Form.Label>upload your photo</Form.Label>
+        <Form.Control type="file" name="userImage"  onChange={handleChange}  />
+       
+      </Form.Group>
 
-      <form onSubmit={handleSubmit} encType="multipart/form-data">
-      <div className="input">
-        <label htmlFor="email">upload your image</label>
-                <input type="file" name="userImage"  onChange={handleChange}    />
-              </div>
+      <Form.Group className="mb-3" controlId="formBasicFullname">
+        <Form.Label>enter your fullname</Form.Label>
+        <Form.Control type="text" name="fullname" value={values.fullname} onChange={handleChange} placeholder="enter your fullname" />
+       
+      </Form.Group>
+      <Form.Group className="mb-3" controlId="formBasicUsername">
+        <Form.Label>enter your username</Form.Label>
+        <Form.Control type="text" name="username" value={values.username} onChange={handleChange} placeholder="enter your username" />
+       
+      </Form.Group>
 
-        <div>
-          <label htmlFor="name">Full Name</label>
-          <input
-            type="text"
-            placeholder="Enter your fullname"
-            id="fullname"
-            name="fullname"
-            value={values.fullname}
-            onChange={handleChange}
-        
+      <Form.Group className="mb-3" controlId="formBasicLocation">
+        <Form.Label>enter your country</Form.Label>
+        <Form.Control type="text" name="location" value={values.location} onChange={handleChange} placeholder="enter your location" />
+       
+      </Form.Group>
+      <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Label>enter your email address</Form.Label>
+        <Form.Control type="email" name="email" value={values.email} onChange={handleChange} placeholder="enter your email" />
+       
+      </Form.Group>
 
-          />
-        </div>
-        <div>
-          <label htmlFor="name">username</label>
-          <input
-            type="text"
-            placeholder="Enter your username"
-            id="username"
-            name="username"
-            value={values.username}
-            onChange={handleChange}
-          />
-        </div>
-
-        
-        <div>
-          <label htmlFor="email">current location</label>
-          <input
-            type="text"
-            placeholder="Enter your current location"
-            id="location"
-            name="location"
-            value={values.location}
-            onChange={handleChange}
-          />
-        </div>
-        
-
-        <div>
-          <label htmlFor="email">Email Address</label>
-          <input
-            type="text"
-            placeholder="Enter email address"
-            id="email"
-            name="email"
-            value={values.email}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="question">Enter a unique word to help in password rest</label>
-          <input
-            type="text"
-            placeholder="Enter a unique word"
-            id="question"
-            name="question"
-            value={values.question}
-            onChange={handleChange}
-          />
-        </div>
+      <Form.Group className="mb-3" controlId="formBasicQuestion">
+        <Form.Label>enter a unique word to help in password reset</Form.Label>
+        <Form.Control type="text" name="question" value={values.question} onChange={handleChange} placeholder="enter your unique " />
+       
+      </Form.Group>
+      <Form.Group className="mb-3" controlId="formBasicPassword">
+        <Form.Label>enter your pasword</Form.Label>
+        <Form.Control type="text" name="password" value={values.password} onChange={handleChange} placeholder="enter your password" />
+       
+      </Form.Group>
 
 
-        <div>
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            placeholder="Enter password"
-            id="password"
-            name="password"
-            value={values.password}
-            onChange={handleChange}
-          />
-        </div>
+      <Button variant="warning" type="submit">
+        Submit
+      </Button>
 
-        <div className="row">
-          <button type="submit">Register</button>
-        </div>
-      </form>
 
-      <p>
-        Already an account? <Link to="/login">Login</Link>{" "}
-      </p>
-    </div>
-  );
+      
+
+
+      </Form>
+      </Col>
+    </Row>
+    <Row className="py-3">
+          <Col>
+            have an account?
+            <Link to="/login">login</Link>
+          </Col>
+          <Col className="text-right">
+            <Link to="/forgot">Forgot Password</Link>
+          </Col>
+        </Row>
+
+  </Container>
+
+      );
 }
 
 export default Register;

@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import "./auth.css";
+import { Container, Form, Row, Col, Button } from 'react-bootstrap';
+
+
 import axios from "axios";
 
 
@@ -48,46 +50,47 @@ function Login() {
   
 
   return (
-    <div className="login_page">
-      <h2>Login</h2>
+    <Container>
+    <Row className="justify-content-md-center">
+      <Col xs={12} md={6}>
+      <h1>Log In</h1>
+      <Form onSubmit={handleSubmit}>
+      <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Label>enter your username</Form.Label>
+        <Form.Control type="name" name="username" value={values.username} onChange={handleChange} placeholder="enter your username" />
+       
+      </Form.Group>
+
+      <Form.Group className="mb-3" controlId="formBasicPassword">
+        <Form.Label>enter your password</Form.Label>
+        <Form.Control type="password" name="password" value={values.password} onChange={handleChange} placeholder="enter your password" />
+       
+      </Form.Group>
+      <Button variant="danger" type="submit">
+        Submit
+      </Button>
+
+
       
 
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="username">Username</label>
-          <input
-            type="text"
-            placeholder="Enter your username"
-            id="username"
-            name="username"
-            value={values.username}
-            onChange={handleChange}
-          />
-        </div>
 
-        <div>
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            placeholder="Enter password"
-            id="password"
-            name="password"
-            value={values.password}
-            onChange={handleChange}
-          />
-        </div>
+      </Form>
+      <Row className="py-3">
+          <Col>
+            New Customer?
+            <Link to="/register">Register</Link>
+          </Col>
+          <Col className="text-right">
+            <Link to="/forgot">Forgot Password</Link>
+          </Col>
+        </Row>
 
-        <div className="row">
-          <button type="submit">Login</button>
-          <Link to="/forgot">Forgot your password? </Link>
-        </div>
-      </form>
+        
+      </Col>
+    </Row>
+  </Container>
 
-      <p>
-        New Customer? <Link to="/register"> Register</Link>
-      </p>
-    </div>
-  );
+      );
 }
 
 export default Login;

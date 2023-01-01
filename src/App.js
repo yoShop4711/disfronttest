@@ -40,6 +40,7 @@ import UpdateWishlists from "./components/buyer/UpdateWishlists"
 import DeleteWishlists from "./components/buyer/DeleteWishlists"
 import CustomersOrders from "./components/seller/CustomersOrders"
 import BuyerProfile from "./components/seller/BuyerProfile"
+import NavHeader from "./components/header/NavHeader"
 
 
 
@@ -52,7 +53,8 @@ function App() {
   
     <Router>
     <div className='container'>
-  <Header />
+  {/* <Header /> */}
+  <NavHeader />
   <Routes>
 
 <Route path="/" element={ <Products /> } />

@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { useNavigate } from "react-router-dom"
 import axios from "axios"
-import './auth.css'
+import "./auth.css"
+
 
 function Forgot() {
     const navigate = useNavigate()
@@ -38,6 +39,7 @@ function Forgot() {
     }
     
     return (
+
         <div className="fg_pass">
             <h2>Forgot Your Password?</h2>
 
