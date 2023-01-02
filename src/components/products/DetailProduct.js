@@ -1,8 +1,12 @@
-import { useParams, Link } from "react-router-dom"
+import { useParams, Link, useNavigate } from "react-router-dom"
 import {GlobalState} from "../../GlobalState"
 import ProductItem from "./ProductItem"
 import "./detailProduct.css"
 import { useEffect, useState, useContext } from "react"
+import { Card } from 'react-bootstrap';
+import {addItem,  itemTotal} from "../../api/CartApi"
+
+
 
 
 function  DetailProduct() {
@@ -12,6 +16,24 @@ function  DetailProduct() {
    const [detailProduct, setDetailProduct] = useState([])
    const[users, setUsers] = state.UsersApi.users
    const[single, setSingle] = useState([])
+   const navigate = useNavigate()
+    const [redirect, setRedirect] = useState(false);
+
+    const addToCart = () => {
+        addItem(detailProduct, () => {
+
+            setRedirect(true);
+        })
+
+    };
+
+    const shouldRedirect = redirect => {
+        if (redirect) {
+            return navigate('/cart');
+        }
+    };
+
+
 
    useEffect(() => {
 
@@ -63,11 +85,13 @@ function  DetailProduct() {
 
     return(
     <>
-    
-    <div className="detail">
-    
+     {shouldRedirect(redirect)}
 
-<img src={`data:image/jpg;base64, ${base64String}`}  alt={detailProduct.productName} />
+<Card className="my-3 p-3 rounded  ">
+<Card.Img src={`data:image/jpg;base64, ${base64String}`} variant="top" />
+
+    </Card>
+    <div className="detail">
 
 <div className="box_detail">
     <div className="row">
@@ -80,12 +104,10 @@ function  DetailProduct() {
 
                <span> MK {detailProduct.productPrice}</span>
                     <p>{detailProduct.productDescription}</p>
-                    <p>{detailProduct.productAvailability}</p>
-                    <p>{detailProduct.productQuantity}</p>
                     <p>Seller: {single.fullname}</p>
 
-                    <Link to="/cart" className="cart">
-                        Buy Now
+                    <Link to="#!"   onClick={addToCart}>
+                   <button className="btn btn-danger"> Buy Now </button>
                     </Link>
 
 

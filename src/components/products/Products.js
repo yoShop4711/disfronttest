@@ -1,6 +1,8 @@
 import { useState, useContext } from "react"
 import { GlobalState } from "../../GlobalState"
-import "./products.css"
+import { Row, Col } from 'react-bootstrap';
+
+// import "./products.css"
 import ProductItem from "./ProductItem"
 import Filters from "./Filters"
 import LoadMore from "./LoadMore"
@@ -21,11 +23,34 @@ function Products() {
     return(
 
         <>
+        <div className="clearfix">
+            <span className="float-left">
+                <h1>latest products...</h1>
+            </span>
+            <span className="float-right">
+                <h1>filters babes</h1>
+            </span>
+
+
+
+        </div>
+        <Row>
+        {
+        products.map(product => (
+            <Col key={product._id}  sm={12} md={6} lg={4} xl={3}>
+
+             <ProductItem  product={product}  />
+             </Col>
+        ))
+       } 
+
+
+        </Row>
     
-    <Filters />
+    
 
     
-    <div className="products">
+    {/* <div className="products">
 
 
 
@@ -38,7 +63,7 @@ function Products() {
     </div>
 
     <LoadMore />
-        {products.length === 0 && <Loading />}
+        {products.length === 0 && <Loading />} */}
 
     
     </>

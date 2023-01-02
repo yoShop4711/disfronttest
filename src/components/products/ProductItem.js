@@ -1,6 +1,10 @@
 import { useEffect, useState, useContext } from "react"
 import { GlobalState } from "../../GlobalState"
-import BtnRender from "./BtnRender"
+import { Card } from 'react-bootstrap';
+
+// import BtnRender from "./BtnRender"
+import 'animate.css'
+import { Link } from "react-router-dom";
 
 
 
@@ -36,25 +40,66 @@ const base64String =  window.btoa(
   );
 
 
-    return(<div className="product_card">
+    return(
+
+<>
+<Card className="my-3 p-3 rounded  animate__animated animate__fadeInUp">
+<Link to={`/detail/${product._id}`}>
+    <Card.Img src={`data:image/jpg;base64, ${base64String}`} variant="top" />
+    </Link>
+
+    <Card.Body>
+    <Card.Title as="div">
+            <strong>{product.productName}</strong>
+          </Card.Title>
+
+          <Card.Text as="h3">
+            <strong>MK {product.productPrice}</strong>
+
+          </Card.Text>
+
+          <Card.Text as="div">
+            <strong>Seller: {single.fullname}</strong>
+
+          </Card.Text>
+
+
+
+
+    </Card.Body>
+
+
+</Card>
+
+
+
+
+</>
+
+
+    
+    
+    // <div className="product_card">
         
 
 
-        <img src={`data:image/jpg;base64, ${base64String}`}  alt={product.productName} />
+    //     <img src={`data:image/jpg;base64, ${base64String}`}  alt={product.productName} />
 
 
-        <div className="product_box">
-            <h2>{product.productName}</h2>
-            <span>MK{product.productPrice}</span>
-            <p>{product.productDescription}</p>
-            <p>Seller: {single.fullname}</p>
+    //     <div className="product_box">
+    //         <h2>{product.productName}</h2>
+    //         <span>MK{product.productPrice}</span>
+    //         <p>{product.productDescription}</p>
+    //         <p>Seller: {single.fullname}</p>
 
 
-        </div>
+    //     </div>
 
-        <BtnRender product={product} />
+    //     <BtnRender product={product} />
     
-    </div>)
+    // </div>
+    
+    )
 }
 
 export default ProductItem
