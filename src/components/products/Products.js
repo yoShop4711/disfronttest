@@ -1,39 +1,25 @@
 import { useState, useContext } from "react"
 import { GlobalState } from "../../GlobalState"
 import { Row, Col } from 'react-bootstrap';
-
-// import "./products.css"
 import ProductItem from "./ProductItem"
-import Filters from "./Filters"
-import LoadMore from "./LoadMore"
-import Loading from "./Loading"
+import Meta from "./Meta";
 
 function Products() {
     const state = useContext(GlobalState)
 
     
      const [products] = state.ProductsApi.products
-    const [loading, setLoading] = useState(false)
+    
 
 
 
     
 
-    if(loading) return <div><Loading /></div>
     return(
 
         <>
-        <div className="clearfix">
-            <span className="float-left">
-                <h1>latest products...</h1>
-            </span>
-            <span className="float-right">
-                <h1>filters babes</h1>
-            </span>
-
-
-
-        </div>
+        <Meta />
+        
         <Row>
         {
         products.map(product => (
