@@ -1,9 +1,8 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { Navbar, Nav, Container, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { itemTotal } from "../../api/CartApi";
 import { GlobalState } from "../../GlobalState";
-import { Link } from "react-router-dom";
 
 
 
@@ -11,7 +10,7 @@ function NavHeader() {
     const state = useContext(GlobalState);
     const [isLogged] = state.userApi.isLogged;
     const [isSeller] = state.userApi.isSeller;
-    const [owner] = state.userApi.owner;
+    // const [owner] = state.userApi.owner;
     const [isAdmin] = state.userApi.isAdmin;
     const [isBuyer] = state.userApi.isBuyer;
 
@@ -143,9 +142,10 @@ function NavHeader() {
           <LinkContainer to="/">
             <Navbar.Brand>yoShop</Navbar.Brand>
           </LinkContainer>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
+          <Navbar.Toggle  />
+          <Navbar.Collapse >
             {/* <SearchBox /> */}
+            
             <Nav className="ml-auto">
               <LinkContainer to="/cart">
                 <Nav.Link>

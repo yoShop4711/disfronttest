@@ -1,8 +1,6 @@
 import { useEffect, useState, useContext } from "react"
 import { GlobalState } from "../../GlobalState"
 import { Card } from 'react-bootstrap';
-
-// import BtnRender from "./BtnRender"
 import 'animate.css'
 import { Link } from "react-router-dom";
 
@@ -43,9 +41,13 @@ const base64String =  window.btoa(
     return(
 
 <>
-<Card className="my-3 p-3 rounded  animate__animated animate__fadeInUp">
+
+            
+            
+
+<Card className="my-3 p-3 rounded  animate__animated animate__fadeInUp card-img-top">
 <Link to={`/detail/${product._id}`}>
-    <Card.Img src={`data:image/jpg;base64, ${base64String}`} variant="top" />
+    <Card.Img src={`data:image/jpg;base64, ${base64String}`} className="img-responsive" variant="top" />
     </Link>
 
     <Card.Body>

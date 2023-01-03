@@ -80,7 +80,7 @@ function CartItems({
   );
 
   return (
-    <div className="card">
+    <div className="card dice">
       {/* {shouldRedirect(redirect)} */}
 
       <div className="card-body">

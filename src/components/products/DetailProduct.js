@@ -4,7 +4,7 @@ import ProductItem from "./ProductItem"
 import "./detailProduct.css"
 import { useEffect, useState, useContext } from "react"
 import { Card } from 'react-bootstrap';
-import {addItem,  itemTotal} from "../../api/CartApi"
+import {addItem} from "../../api/CartApi"
 
 
 
@@ -88,7 +88,7 @@ function  DetailProduct() {
      {shouldRedirect(redirect)}
 
 <Card className="my-3 p-3 rounded  ">
-<Card.Img src={`data:image/jpg;base64, ${base64String}`} variant="top" />
+<Card.Img src={`data:image/jpg;base64, ${base64String}`} style={{width: "100%", height: "100%"}} variant="top" />
 
     </Card>
     <div className="detail">
