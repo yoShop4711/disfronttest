@@ -83,7 +83,7 @@ function CartItems({
     <div className="card dice">
       {/* {shouldRedirect(redirect)} */}
 
-      <div className="card-body">
+      <div className="card-body ">
         <img
           src={`data:image/jpg;base64, ${base64String}`}
           className="mt-3"

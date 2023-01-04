@@ -41,6 +41,7 @@ import DeleteWishlists from "./components/buyer/DeleteWishlists"
 import CustomersOrders from "./components/seller/CustomersOrders"
 import BuyerProfile from "./components/seller/BuyerProfile"
 import NavHeader from "./components/header/NavHeader"
+import Footer from "./components/Footer"
 
 
 
@@ -52,9 +53,11 @@ function App() {
     
   
     <Router>
+      <NavHeader />
+      <main className="py-3">
     <div className='container'>
-  {/* <Header /> */}
-  <NavHeader />
+
+  
   <Routes>
 
 <Route path="/" element={ <Products /> } />
@@ -108,8 +111,11 @@ function App() {
 
   
   </Routes>
-  
+    
   </div>
+  </main>
+  <Footer />
+
   
   </Router>
 

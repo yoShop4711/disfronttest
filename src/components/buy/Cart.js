@@ -52,7 +52,7 @@ function Cart() {
 
     
     
-    <div className="row">
+    <div className="row my-3 p-3">
                 <div className="col-6">
                     {items.length > 0 ? showItems(items) : noItemsMessage()}
                 </div>

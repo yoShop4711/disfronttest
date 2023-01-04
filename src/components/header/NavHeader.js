@@ -10,7 +10,7 @@ function NavHeader() {
     const state = useContext(GlobalState);
     const [isLogged] = state.userApi.isLogged;
     const [isSeller] = state.userApi.isSeller;
-    // const [owner] = state.userApi.owner;
+    const [owner] = state.userApi.owner;
     const [isAdmin] = state.userApi.isAdmin;
     const [isBuyer] = state.userApi.isBuyer;
 
@@ -140,7 +140,7 @@ function NavHeader() {
             <Navbar bg="dark" variant="dark" expand="lg" collapseOnSelect>
         <Container>
           <LinkContainer to="/">
-            <Navbar.Brand>yoShop</Navbar.Brand>
+            <Navbar.Brand>{figureOut() ? owner : "yoShop"}</Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle  />
           <Navbar.Collapse >
