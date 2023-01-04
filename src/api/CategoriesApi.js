@@ -9,11 +9,11 @@ function CategoriesApi() {
         const getCategories = async () =>{
             const res = await axios.get('https://newyoshopapi.onrender.com/api/categories')
             setCategories(res.data)
-            // console.log(categories);
+    
         }
 
         getCategories()
-    },[callback])
+    },[callback, categories ])
     return {
         categories: [categories, setCategories],
         callback: [callback, setCallback]

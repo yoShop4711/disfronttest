@@ -23,7 +23,11 @@ function DeleteProduct() {
             }
         })
 
-        alert(res.data.msg); }
+        alert(res.data.msg);
+
+        window.location.href = "/my_products"
+    
+    }
 
 
 

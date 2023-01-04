@@ -66,6 +66,8 @@ function CreateProduct() {
         })
 
         alert(res.data.msg)
+        window.location.href = "/my_products"
+
        
     }
 

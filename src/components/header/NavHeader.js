@@ -13,6 +13,9 @@ function NavHeader() {
     const [owner] = state.userApi.owner;
     const [isAdmin] = state.userApi.isAdmin;
     const [isBuyer] = state.userApi.isBuyer;
+    
+
+    
 
     const logoutUser = async () => {
         localStorage.removeItem('token')
