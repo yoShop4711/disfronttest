@@ -42,16 +42,15 @@ const base64String =  window.btoa(
 
 <>
 
-            
-            
+         
 
-<Card className="my-3 p-3 rounded  animate__animated animate__fadeInUp card-img-top">
+<Card className="my-3 p-3 rounded  animate__animated animate__fadeInUp  flex-fill h-100  "  > 
 <Link to={`/detail/${product._id}`}>
     <Card.Img src={`data:image/jpg;base64, ${base64String}`} className="img-responsive" variant="top" />
     </Link>
 
     <Card.Body>
-    <Card.Title as="div">
+    <Card.Title as="p">
             <strong>{product.productName}</strong>
           </Card.Title>
 
@@ -74,32 +73,8 @@ const base64String =  window.btoa(
 </Card>
 
 
-
-
 </>
 
-
-    
-    
-    // <div className="product_card">
-        
-
-
-    //     <img src={`data:image/jpg;base64, ${base64String}`}  alt={product.productName} />
-
-
-    //     <div className="product_box">
-    //         <h2>{product.productName}</h2>
-    //         <span>MK{product.productPrice}</span>
-    //         <p>{product.productDescription}</p>
-    //         <p>Seller: {single.fullname}</p>
-
-
-    //     </div>
-
-    //     <BtnRender product={product} />
-    
-    // </div>
     
     )
 }

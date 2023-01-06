@@ -30,7 +30,7 @@ function Products() {
 
   return (
     <div className="container" style={{ padding: "10px" }}>
-      <div class=" d-flex justify-content-between" >
+      <div class=" d-flex justify-content-evenly" >
       
                 <select name="categor" value={categor} onChange={handleCategory} >
                     <option value=''>All Products</option>
@@ -47,8 +47,6 @@ function Products() {
 
                 <select value={sort} onChange={e => setSort(e.target.value)} >
                     <option value=''>Newest</option>
-                    {/* <option value='sort=oldest'>Oldest</option>
-                    <option value='sort=-productAvailability'>Product productAvailability</option> */}
                     <option value='sort=-productPrice'>Price: High-Low</option>
                     <option value='sort=productPrice'>Price: Low-High</option>
                 </select>
@@ -60,11 +58,15 @@ function Products() {
 
       <Row>
         {products.map((product) => (
-          <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
+          <Col key={product._id} sm={12} md={6} lg={4} xl={3}  >
+          
             <ProductItem product={product} />
+            
+          
           </Col>
         ))}
       </Row>
+      
     </div>
   );
 }
