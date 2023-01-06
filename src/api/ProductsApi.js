@@ -7,6 +7,7 @@ function ProductsSApi() {
     const [callback, setCallback] = useState(false)
     const [name, setName] = useState('')
     const [sort, setSort] = useState('')
+    const [categor, setCategory] = useState('')
     const [search, setSearch] = useState('')
     const [page, setPage] = useState(1)
     const [result, setResult] = useState(0)
@@ -15,16 +16,17 @@ useEffect(() => {
 
     const getProducts = async() => {
 
-        const res = await axios.get(`https://newyoshopapi.onrender.com/api/show_products?limit=${page*9}&${name}&${sort}&title[regex]=${search}`)
+        const res = await axios.get(`https://newyoshopapi.onrender.com/api/show_products?limit=${page*9}&${categor}&${sort}&title[regex]=${search}`)
         setProducts(res.data.products)
         setResult(res.data.result)
+        
 
 
     }
     getProducts()
 
 
-}, [callback, name, sort, search, page])
+}, [callback, name, sort, search, page, categor])
 
     return{
 
@@ -32,6 +34,7 @@ useEffect(() => {
         callback: [callback, setCallback],
         name: [name, setName],
         sort: [sort, setSort],
+        categor: [categor, setCategory],
         search: [search, setSearch],
         page: [page, setPage],
         result: [result, setResult]
