@@ -21,7 +21,7 @@ function UserStatus() {
                 })
 
                 alert(res.data.msg)
-                window.location.href = "/show_users"
+                window.location.href = "/show_sellers"
             }
 
 

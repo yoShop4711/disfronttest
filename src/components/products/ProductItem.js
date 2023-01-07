@@ -44,7 +44,7 @@ const base64String =  window.btoa(
 
          
 
-<Card className="my-3 p-3 rounded  animate__animated animate__fadeInUp  flex-fill h-100  "  > 
+<Card className="my-3 p-2 rounded  animate__animated animate__fadeInUp  flex-fill h-80  "  > 
 <Link to={`/detail/${product._id}`}>
     <Card.Img src={`data:image/jpg;base64, ${base64String}`} className="img-responsive" variant="top" />
     </Link>

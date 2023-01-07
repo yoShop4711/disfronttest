@@ -70,6 +70,7 @@ function CartItems({
     );
   };
 
+  
   const picture = product.productImage.data.data;
 
   const base64String = window.btoa(

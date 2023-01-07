@@ -4,6 +4,7 @@ import { Row, Col } from "react-bootstrap";
 import ProductItem from "./ProductItem";
 
 
+
 function Products() {
   const state = useContext(GlobalState);
 
@@ -16,11 +17,14 @@ function Products() {
 
   
 
+  
+
 
   const handleCategory = e => {
     setCategory(e.target.value)
     setSearch('')
     
+
 }
 
    
@@ -28,8 +32,9 @@ function Products() {
 
 
 
+
   return (
-    <div className="container" style={{ padding: "10px" }}>
+    <div className="container" >
       <div class=" d-flex justify-content-evenly" >
       
                 <select name="categor" value={categor} onChange={handleCategory} >
@@ -55,7 +60,7 @@ function Products() {
       
         
       </div>
-
+<div style={{padding: "10px"}}>
       <Row>
         {products.map((product) => (
           <Col key={product._id} sm={12} md={6} lg={4} xl={3}  >
@@ -66,6 +71,7 @@ function Products() {
           </Col>
         ))}
       </Row>
+      </div>
       
     </div>
   );
