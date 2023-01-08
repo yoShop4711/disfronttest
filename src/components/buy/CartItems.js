@@ -53,17 +53,20 @@ function CartItems({
   const showCartUpdateOptions = (cartUpdate) => {
     return (
       cartUpdate && (
-        <div>
+        <div className="mt-2">
           <div className="input-group mb-3">
+        
             <div className="input-group-prepend">
               <span className="input-group-text">Adjust Quantity</span>
             </div>
-            <input
+                        <input
               type="number"
               className="form-control"
-              value={count}
+              
               onChange={handleChange(product._id)}
             />
+            <br />
+            <h2>{count}</h2>
           </div>
         </div>
       )
