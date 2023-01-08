@@ -65,9 +65,10 @@ function CartItems({
               
               onChange={handleChange(product._id)}
             />
-            <br />
-            <h2>{count}</h2>
+           
           </div>
+          <br />
+            <h2>number of item(S): {count}</h2>
         </div>
       )
     );
