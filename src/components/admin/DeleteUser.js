@@ -21,7 +21,10 @@ function DeleteUser() {
             }
         })
 
-        alert(res.data.msg); }
+        alert(res.data.msg);
+        window.location.href = "/show_users"
+    
+    }
 
 
 
