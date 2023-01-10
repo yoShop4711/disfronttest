@@ -1,11 +1,13 @@
 import { useContext, useEffect, useState } from "react"
 import { GlobalState } from "../../GlobalState"
+import { Card} from "react-bootstrap"
 import moment from "moment"
 
 
 
 
 function Orders({order, amount, status, user, updated}) {
+  
   
 
 
@@ -76,12 +78,67 @@ products.forEach(product => {
   if(singleOrders.length === 0) 
       return <h2 style={{textAlign: "center", fontSize: "5rem"}}>No Orders</h2> 
 
-
+      
 
     return(<>
+    <div className="col-md-10 mx-auto ">
+      <Card className=" my-3 p-2 flex-fill h-150 "> 
+      <Card.Img src={`data:image/jpg;base64, ${base64String}`}  className="img-responsive" variant="top" />
+      <Card.Body>
+      <Card.Text as="span">seller: </Card.Text>
+        <Card.Link href={`/user/${merchant._id}`}>
+         {merchant.fullname} 
+
+        </Card.Link>
+        
+        <div style={{padding: "5px"}}>
+
+        </div>
+        <Card.Text as="span">buyer: </Card.Text>
+        <Card.Link href={`/user/${buyer._id}`}>
+         {buyer.fullname} 
+
+        </Card.Link>
+
+        <div style={{padding: "5px"}}>
+          </div>
+
+          <Card.Text as="p">
+          Product: <em> {singleOrders.productName} </em>
+          </Card.Text>
+
+          <Card.Text as="p">
+          Price: <em>MK{amount}</em>
+          </Card.Text>
+
+          <Card.Text as="p">
+          status: <em> {status} </em>
+          </Card.Text>
+
+          <Card.Text as="p">
+          number of products: <em>{order.count}</em>
+          </Card.Text>
+
+          <Card.Text as="p">
+          Last updated {moment(updated).fromNow()}
+          </Card.Text>
+          
+          
 
 
-<div className="product_card">
+
+
+
+
+
+      </Card.Body>
+      </Card>
+      
+      
+    </div>
+
+
+{/* <div className="product_card" style={{height: "150%"}}>
 
 <img  src={`data:image/jpg;base64, ${base64String}`} alt={singleOrders.productName} />
 
@@ -106,7 +163,7 @@ products.forEach(product => {
     
     
     </div>
-
+ */}
 
  {/* <div className="container">    
  <div className="row">

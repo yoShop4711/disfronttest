@@ -53,7 +53,7 @@ function ShowUsers() {
 
   }
 
-  console.log(paginated);
+  
 
   return (
     <div>

@@ -1,11 +1,11 @@
-import { useState } from "react";
-// import "./auth.css";
+import  React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { Container, Form, Row, Col, Button } from 'react-bootstrap';
 
 
 function Register() {
+  
   const [values, setValues] = useState({
     fullname: "",
     username: "",

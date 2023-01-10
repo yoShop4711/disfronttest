@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from "react"
 import { GlobalState } from "../../GlobalState"
 import axios from "axios"
 import { useParams } from "react-router-dom"
-import { Card, ListGroup } from "react-bootstrap"
+import { Card } from "react-bootstrap"
 import "./user.css"
 
 
@@ -69,25 +69,33 @@ function User() {
 
        
 return(
-    <div className="col d-flex justify-content-center centered">
-    <Card style={{width: '18rem'}}>
-        <Card.Img variant="top" src={`data:image/jpg;base64, ${base64String}`}  />
+<div className="col-md-6 mx-auto text-center">
+{/* my-6 p-6 */}
 
-        <Card.Body>
-            <Card.Title>{single.fullname}</Card.Title>
-            <ListGroup variant="flush">
-            <ListGroup.Item><span style={{color: "red"}}>username: </span>{single.username}</ListGroup.Item>
-            <ListGroup.Item> <span style={{color: "blue"}}>Email: </span> {single.email}</ListGroup.Item>
-            <ListGroup.Item> <span style={{color: "green"}}>Location: </span> {single.location}</ListGroup.Item>
-            <ListGroup.Item><span style={{color: "red"}}>Security: </span> {single.question}</ListGroup.Item>
-            </ListGroup>
-            
-            <Card.Link href={`/user_status/${single._id}`}>User Status</Card.Link>
-            <Card.Link href={`/delete_user/${single._id}`}>Delete User</Card.Link>
-            
-        </Card.Body>
-    </Card>
+<Card >
+<Card.Img src={`data:image/jpg;base64, ${base64String}`} style={{width: "100%", height: "100%"}} variant="top" />
+<Card.Body>
+<Card.Title as="div">{single.fullname}</Card.Title>
+<Card.Text as="p">username: {single.username}</Card.Text>
+<Card.Text as="p">email: {single.email}</Card.Text>
+<Card.Text as="p">location: {single.location}</Card.Text>
+<Card.Link href={`/user_status/${single._id}`}>change user status</Card.Link>
+<Card.Link href={`/delete_user/${single._id}`}>delete user</Card.Link>
 
+
+
+
+</Card.Body>
+
+</Card>
+
+
+
+
+
+
+    
+    
 
 
 
