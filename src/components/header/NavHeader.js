@@ -84,9 +84,15 @@ function NavHeader() {
             </NavItem>
             <NavItem>
               <LinkContainer to="/create_category">
-                <Nav.Link>create Category</Nav.Link>
+                <Nav.Link>create category</Nav.Link>
               </LinkContainer>
             </NavItem>
+            <NavItem>
+              <LinkContainer to="/customers_with_orders">
+                <Nav.Link>customers with orders</Nav.Link>
+              </LinkContainer>
+            </NavItem>
+
             <NavItem>
               <LinkContainer to="/orders">
                 <Nav.Link>orders</Nav.Link>
@@ -177,20 +183,7 @@ function NavHeader() {
                   </Nav.Link>
                 </LinkContainer> )}
               
-              {/*
-              {userInfo && userInfo.role === 'admin' && (
-                <NavDropdown title="Admin" id="adminMenu">
-                  <LinkContainer to={routes.USERS}>
-                    <NavDropdown.Item>Users</NavDropdown.Item>
-                  </LinkContainer>
-                  <LinkContainer to={routes.PRODUCTS}>
-                    <NavDropdown.Item>Products</NavDropdown.Item>
-                  </LinkContainer>
-                  <LinkContainer to={routes.ORDERS}>
-                    <NavDropdown.Item>Orders</NavDropdown.Item>
-                  </LinkContainer>
-                </NavDropdown>
-              )} */}
+              
             </Nav>
           </Navbar.Collapse>
         </Container>

@@ -42,6 +42,7 @@ import CustomersOrders from "./components/seller/CustomersOrders"
 import BuyerProfile from "./components/seller/BuyerProfile"
 import NavHeader from "./components/header/NavHeader"
 import Footer from "./components/Footer"
+import CustomersWithOrders from "./components/admin/CustomersWithOrders"
 
 
 
@@ -107,6 +108,7 @@ function App() {
 <Route path="/delete_wishlist/:id" element={<DeleteWishlists />} />
 <Route path="/customer_orders" element={<CustomersOrders />} />
 <Route path="/buyer_profile/:id" element={<BuyerProfile />}  />
+<Route path="/customers_with_orders" element={<CustomersWithOrders />} />
 
 
   
