@@ -7,7 +7,8 @@ function CustomersWithOrders() {
     const state = useContext(GlobalState)
     const token = state.token
     const[users] = state.UsersApi.users
-    const[customerOrders, setCustomerOrders] = useState([])
+    let [customerOrders, setCustomerOrders] = useState([])
+    let resultt = []
 
 
     
@@ -31,6 +32,15 @@ function CustomersWithOrders() {
     }, [token])
 
 
+    let uniques =  customerOrders.filter(cus => {
+        let isDup = resultt.includes(cus.user)
+        if(!isDup) {
+          resultt.push(cus.user)
+          return true  
+        }
+        return false
+    })
+
     
     
 
@@ -38,59 +48,59 @@ function CustomersWithOrders() {
     return(<>
     <h1 className="text-center">Customers With Orders</h1>
 
-    {
-       Array.from(customerOrders).map((customerOrder, index) => {
-            return <CustomerWithOrder key={index} customerOrder={customerOrder} users={users} />
-        })
-    }
     
+
     
+
+
+       {
+       Array.from(uniques).map((customerOrder) => (
+                 <CustomerWithOrder customer={customerOrder} users={users} />
+            )
+            )
+        
+    
+    }       
     </>)
 }
 
 
-const CustomerWithOrder = ({customerOrder, users}) => {
+const CustomerWithOrder = ({customer, users}) => {
 let[userOrder, setUserOrder] = useState([])
 
 
+console.log(customer.user);
 
 useEffect(() => {
     
-    if(customerOrder.user) {
+    if(customer.user) {
     users.forEach((userId) => {
-          if(userId._id === customerOrder.user) setUserOrder(userId) 
-    } )
+          if(userId._id === customer.user){
+
+            setUserOrder(userId)
+
+          }})
 
     }
 
     
 
-
-               
-
-}, [customerOrder.user, users])
-
-
-
-
-               
-
-
+}, [customer.user, users])
 
 
 
 
 if(userOrder.length === 0) return null
 
-// console.log(userOrder);
 
 
 
-    return(<div>
-          {/* <ul className="list-group">
+
+    return(<div className="mx-auto text-center">
+          <ul className="list-group">
             <li className="list-group-item"><Link to={`/user/${userOrder._id}`}>{userOrder.username}</Link></li>
 
-        </ul>  */}
+        </ul> 
     </div>)
 }
 
