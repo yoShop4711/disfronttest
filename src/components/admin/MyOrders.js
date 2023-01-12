@@ -2,6 +2,7 @@ import axios from "axios"
 import {  useEffect, useState, useContext } from "react"
 import { GlobalState } from "../../GlobalState"
 import AllOrders from "./AllOrders"
+import OrdersPagination from "./OrdersPagination"
 import "./products.css"
 
 
@@ -10,6 +11,9 @@ function MyOrders() {
   const state =  useContext(GlobalState)
   const token = state.token
   const[items, setItems] = useState([])
+  const[currentPage, SetCurrentPage] = useState(1)
+  const[ordersPerPage] = useState(2)
+  
 
   useEffect(() => {
 
@@ -33,6 +37,14 @@ function MyOrders() {
 
   }, [token])
 
+
+  const indexOfLastName = currentPage + ordersPerPage
+const indexOfFirstName = indexOfLastName - ordersPerPage
+const orderItems = items.slice(indexOfFirstName, indexOfLastName)
+
+
+const paginate = (pageNumber) => SetCurrentPage(pageNumber)
+
   
 
 
@@ -41,7 +53,7 @@ function MyOrders() {
 
 
      {
-        items.map(item => {
+        orderItems.map(item => {
             return(
 
                 
@@ -65,7 +77,7 @@ function MyOrders() {
         })
     }
      
-    
+    <OrdersPagination currentPage={currentPage} totalOrders={orderItems} paginate={paginate} />
     
     </div>)
 

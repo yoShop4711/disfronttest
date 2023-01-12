@@ -1,7 +1,12 @@
 import { useContext, useEffect, useState } from "react"
 import {GlobalState}  from "../../GlobalState"
 import axios from "axios"
-import { Link } from "react-router-dom"
+import Pagination from "./Pagination"
+import CustomerWithOrder from "./CustomerWithOrder"
+
+
+
+
 
 function CustomersWithOrders() {
     const state = useContext(GlobalState)
@@ -9,6 +14,10 @@ function CustomersWithOrders() {
     const[users] = state.UsersApi.users
     let [customerOrders, setCustomerOrders] = useState([])
     let resultt = []
+    const[currentPage, SetCurrentPage] = useState(1)
+const[customersPerPage] = useState(2)
+
+
 
 
     
@@ -41,68 +50,48 @@ function CustomersWithOrders() {
         return false
     })
 
-    
-    
+    const indexOfLastName = currentPage + customersPerPage
+const indexOfFirstName = indexOfLastName - customersPerPage
+const currentName = uniques.slice(indexOfFirstName, indexOfLastName)
+
+
+
+const paginate = (pageNumber) => SetCurrentPage(pageNumber)
+
+// const pagination = (pageNo) => {
+//     // setCurrentPage(pageNo)
+//     SetCurrentPage(pageNo)
+//     const startIndex = (pageNo -1) * customersPerPage
+//     const paginate = _(uniques).slice(startIndex).take(pageSize).value()
+//     setPaginated(paginate)
+
+
+//   }
+
+
+
 
     
     return(<>
     <h1 className="text-center">Customers With Orders</h1>
 
     
-
-    
-
-
-       {
-       Array.from(uniques).map((customerOrder) => (
+        {
+       Array.from(currentName).map((customerOrder) => (
                  <CustomerWithOrder customer={customerOrder} users={users} />
             )
             )
         
     
-    }       
+    }    
+
+    <Pagination currentPage={currentPage} totalCustomers={currentName.length} paginate={paginate} />    
     </>)
 }
 
 
-const CustomerWithOrder = ({customer, users}) => {
-let[userOrder, setUserOrder] = useState([])
 
 
-console.log(customer.user);
-
-useEffect(() => {
-    
-    if(customer.user) {
-    users.forEach((userId) => {
-          if(userId._id === customer.user){
-
-            setUserOrder(userId)
-
-          }})
-
-    }
-
-    
-
-}, [customer.user, users])
-
-
-
-
-if(userOrder.length === 0) return null
-
-
-
-
-
-    return(<div className="mx-auto text-center">
-          <ul className="list-group">
-            <li className="list-group-item"><Link to={`/user/${userOrder._id}`}>{userOrder.username}</Link></li>
-
-        </ul> 
-    </div>)
-}
 
 
 export default CustomersWithOrders
