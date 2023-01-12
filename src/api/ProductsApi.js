@@ -16,7 +16,7 @@ useEffect(() => {
 
     const getProducts = async() => {
 
-        const res = await axios.get(`https://newyoshopapi.onrender.com/api/show_products?limit=${page*9}&${categor}&${sort}&title[regex]=${search}`)
+        const res = await axios.get(`https://newyoshopapi.onrender.com/api/show_products?limit=${page*8}&${categor}&${sort}&title[regex]=${search}`)
         setProducts(res.data.products)
         setResult(res.data.result)
         

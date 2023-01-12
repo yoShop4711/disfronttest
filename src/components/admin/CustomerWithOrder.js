@@ -27,7 +27,7 @@ const CustomerWithOrder = ({customer, users}) => {
     
     
     
-        return(<div>
+        return(<div className="text-center">
     
     
       

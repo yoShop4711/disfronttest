@@ -1,18 +1,15 @@
-function OrdersPagination({ currentPage, totalOrders, paginate }) {
+function ProductsPagination({currentPage, totalProducts, paginate}) {
 
+    const pageNumbers = [];
 
-  const pageNumbers = [];
+    for (let i = 1; i <= Math.ceil(totalProducts / currentPage); i++) {
+      pageNumbers.push(i);
+    }
+  
 
-  for (let i = 1; i <= Math.ceil(totalOrders / currentPage); i++) {
-    pageNumbers.push(i);
-  }
+    return(<>
 
-
-
-
-  return (
-    <div>
-      <nav>
+<nav>
         <ul className="pagination">
           {pageNumbers.map((numero, index) => (
             <li key={index} className="page-item">
@@ -24,8 +21,9 @@ function OrdersPagination({ currentPage, totalOrders, paginate }) {
           ))}
         </ul>
       </nav>
-    </div>
-  );
+    
+    
+    </>)
 }
 
-export default OrdersPagination;
+export default ProductsPagination

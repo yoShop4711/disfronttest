@@ -2,6 +2,7 @@ import { useState,  useContext } from "react";
 import { GlobalState } from "../../GlobalState";
 import { Row, Col } from "react-bootstrap";
 import ProductItem from "./ProductItem";
+import LoadMore from "./LoadMore";
 
 
 
@@ -15,10 +16,6 @@ function Products() {
   const [categor, setCategory] = state.ProductsApi.categor
   
 
-  
-
-  
-
 
   const handleCategory = e => {
     setCategory(e.target.value)
@@ -27,7 +24,6 @@ function Products() {
 
 }
 
-   
 
 
 
@@ -73,6 +69,9 @@ function Products() {
         ))}
       </Row>
       </div>
+
+<LoadMore />
+      
       
     </div>
   );
