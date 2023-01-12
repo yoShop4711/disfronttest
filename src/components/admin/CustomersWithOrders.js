@@ -15,7 +15,7 @@ function CustomersWithOrders() {
     let [customerOrders, setCustomerOrders] = useState([])
     let resultt = []
     const[currentPage, SetCurrentPage] = useState(1)
-const[customersPerPage] = useState(2)
+    const[customersPerPage] = useState(2)
 
 
 
@@ -51,25 +51,12 @@ const[customersPerPage] = useState(2)
     })
 
     const indexOfLastName = currentPage + customersPerPage
-const indexOfFirstName = indexOfLastName - customersPerPage
-const currentName = uniques.slice(indexOfFirstName, indexOfLastName)
+    const indexOfFirstName = indexOfLastName - customersPerPage
+    const currentName = uniques.slice(indexOfFirstName, indexOfLastName)
 
 
 
 const paginate = (pageNumber) => SetCurrentPage(pageNumber)
-
-// const pagination = (pageNo) => {
-//     // setCurrentPage(pageNo)
-//     SetCurrentPage(pageNo)
-//     const startIndex = (pageNo -1) * customersPerPage
-//     const paginate = _(uniques).slice(startIndex).take(pageSize).value()
-//     setPaginated(paginate)
-
-
-//   }
-
-
-
 
     
     return(<>

@@ -12,7 +12,7 @@ function MyOrders() {
   const token = state.token
   const[items, setItems] = useState([])
   const[currentPage, SetCurrentPage] = useState(1)
-  const[ordersPerPage] = useState(2)
+  const[ordersPerPage] = useState(3)
   
 
   useEffect(() => {
@@ -49,7 +49,10 @@ const paginate = (pageNumber) => SetCurrentPage(pageNumber)
 
 
 
-    return(<div className="products">
+    return(
+    <>
+    <div className="products">
+        
 
 
      {
@@ -76,10 +79,11 @@ const paginate = (pageNumber) => SetCurrentPage(pageNumber)
             )
         })
     }
-     
-    <OrdersPagination currentPage={currentPage} totalOrders={orderItems} paginate={paginate} />
     
-    </div>)
+     </div>
+    <OrdersPagination currentPage={currentPage} totalOrders={orderItems.length} paginate={paginate} />
+    
+    </>)
 
 
 }
