@@ -3,6 +3,9 @@ import { GlobalState } from "../../GlobalState";
 import { Row, Col } from "react-bootstrap";
 import ProductItem from "./ProductItem";
 import LoadMore from "./LoadMore";
+import Loading from "./Loading";
+
+
 
 
 
@@ -15,6 +18,9 @@ function Products() {
   const [products] = state.ProductsApi.products;
   const [categor, setCategory] = state.ProductsApi.categor
   
+  
+  
+  
 
 
   const handleCategory = e => {
@@ -23,8 +29,6 @@ function Products() {
     
 
 }
-
-
 
 
 
@@ -48,6 +52,7 @@ function Products() {
 
                 <select value={sort} onChange={e => setSort(e.target.value)} >
                     <option value=''>Newest</option>
+                    <option value='sort=oldest'>Oldest</option>
                     <option value='sort=-productPrice'>Price: High-Low</option>
                     <option value='sort=productPrice'>Price: Low-High</option>
                 </select>
@@ -71,6 +76,7 @@ function Products() {
       </div>
 
 <LoadMore />
+{products.length === 0 && <Loading />}
       
       
     </div>

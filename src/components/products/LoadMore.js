@@ -1,7 +1,7 @@
 
 import { useContext } from 'react'
 import {GlobalState} from '../../GlobalState'
-import "./products.css"
+// import "./products.css"
 
 
 function LoadMore() {
@@ -9,12 +9,15 @@ function LoadMore() {
    
     const [page, setPage] = state.ProductsApi.page
     const [result] = state.ProductsApi.result
+    
+    // console.log(state);
 
+    
     return (
         <div className="load_more">
             {
                 result < page * 8 ? ""
-                : <button onClick={() => setPage(page+1)}>Load more</button>
+                : <button className='btn btn-danger text-center' onClick={() => setPage(page+1)}>Load more</button>
             }
         </div>
     )
