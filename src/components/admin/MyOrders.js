@@ -70,6 +70,7 @@ function MyOrders() {
 
     return(
     <>
+    <h1 className="text-center">all orders</h1>
     <div className="products">
         
 

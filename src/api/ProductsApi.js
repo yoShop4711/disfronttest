@@ -13,7 +13,6 @@ function ProductsSApi() {
     const [sort, setSort] = useState('')
     const [categor, setCategory] = useState('')
     const [search, setSearch] = useState('')
-    // const [page, setPage] = useState(1)
     const [result, setResult] = useState(0)
     const [paginated, setPaginated] = useState();
     const [currentPage, setCurrentPage] = useState(1);
@@ -63,7 +62,6 @@ const pagination = (pageNo) => {
         sort: [sort, setSort],
         categor: [categor, setCategory],
         search: [search, setSearch],
-        // page: [page, setPage],
         result: [result, setResult],
         pagination: pagination,
         pages: pages,

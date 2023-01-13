@@ -88,10 +88,8 @@ if(uniques.length === 0) return null
         
     
     }   
-    <div style={{padding: "10"}}>
-
-    </div>
-
+   <br>
+   </br>
     
 <nav className="d-flex justify-content-center">
         <ul className="pagination">

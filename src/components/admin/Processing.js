@@ -2,6 +2,15 @@ import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { GlobalState } from "../../GlobalState";
 import ProcessingItem from "./ProcessingItem";
+import Loading from "../products/Loading"
+import "./products.css"
+import _ from "lodash";
+
+
+
+
+const pageSize = 3;
+
 
 
 function Processing() {
@@ -9,6 +18,9 @@ function Processing() {
     const state = useContext(GlobalState)
     const token = state.token
     const[proceSsing, setProcessing] = useState([])
+    const [paginated, setPaginated] = useState();
+    const [currentPage, setCurrentPage] = useState(1);
+
 
     useEffect(() => {
 
@@ -21,6 +33,7 @@ function Processing() {
             })
 
             setProcessing(res.data.processing);
+            setPaginated(_(res.data.processing).slice(0).take(pageSize).value());
 
 
         }
@@ -30,12 +43,33 @@ function Processing() {
 
     }, [token])
 
+    const pageCount = proceSsing ? Math.ceil(proceSsing.length / pageSize) : 0;
+
+  if (pageCount === 1) return null;
+
+  const pages = _.range(1, pageCount + 1);
+
+
+  const pagination = (pageNo) => {
+    setCurrentPage(pageNo)
+    const startIndex = (pageNo -1) * pageSize
+    const paginate = _(proceSsing).slice(startIndex).take(pageSize).value()
+    setPaginated(paginate)
+
+
+  }
+if(proceSsing.length === 0) {
+  return <Loading />
+}
     
 
 
     return(<>
+     <h1 className="text-center">orders which are being processed</h1>
 
-{proceSsing.map((process) => {
+    <div className="products">
+     
+{paginated.map((process) => {
         return process.products.map((item, index) => {
           return (
             <ProcessingItem
@@ -50,8 +84,29 @@ function Processing() {
         });
       })}
 
+      <br>
+      </br>
 
-    
+      <nav className="d-flex justify-content-center">
+        <ul className="pagination">
+          {pages.map((page, index) => (
+            <li
+              className={
+                page === currentPage ? "page-item active" : "page-item"
+              }
+              key={index}
+            >
+            <p className="page-link" onClick={() => pagination(page)} > {page} </p>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+
+
+
+
+</div>    
     
     </>)
 }
