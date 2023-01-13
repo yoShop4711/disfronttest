@@ -2,7 +2,6 @@ import { useState,  useContext } from "react";
 import { GlobalState } from "../../GlobalState";
 import { Row, Col } from "react-bootstrap";
 import ProductItem from "./ProductItem";
-import LoadMore from "./LoadMore";
 import Loading from "./Loading";
 
 
@@ -17,10 +16,10 @@ function Products() {
   const [search, setSearch] = state.ProductsApi.search;
   const [products] = state.ProductsApi.products;
   const [categor, setCategory] = state.ProductsApi.categor
-  
-  
-  
-  
+  const [paginated] = state.ProductsApi.paginated
+  const pages = state.ProductsApi.pages
+  const pagination = state.ProductsApi.pagination
+  const [currentPage] = state.ProductsApi.currentPage
 
 
   const handleCategory = e => {
@@ -30,6 +29,10 @@ function Products() {
 
 }
 
+if(products.length === 0) {
+  return <Loading />
+
+}
 
 
 
@@ -63,7 +66,7 @@ function Products() {
       </div>
 <div style={{padding: "10px"}}>
       <Row>
-        {products.map((product) => (
+        {paginated.map((product) => (
           <Col key={product._id} sm={12} md={6} lg={4} xl={3}   >
         
           
@@ -75,9 +78,24 @@ function Products() {
       </Row>
       </div>
 
-<LoadMore />
-{products.length === 0 && <Loading />}
-      
+
+
+      <br></br>
+      <nav className="d-flex justify-content-center">
+        <ul className="pagination">
+          {pages.map((page, index) => (
+            <li
+              className={
+                page === currentPage ? "page-item active" : "page-item"
+              }
+              key={index}
+            >
+            <p className="page-link" onClick={() => pagination(page)} > {page} </p>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
       
     </div>
   );

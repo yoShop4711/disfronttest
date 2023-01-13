@@ -1,11 +1,13 @@
 import { useContext, useEffect, useState } from "react"
 import {GlobalState}  from "../../GlobalState"
 import axios from "axios"
-import Pagination from "./Pagination"
 import CustomerWithOrder from "./CustomerWithOrder"
+import _ from "lodash";
 
 
 
+
+const pageSize = 2;
 
 
 function CustomersWithOrders() {
@@ -14,8 +16,10 @@ function CustomersWithOrders() {
     const[users] = state.UsersApi.users
     let [customerOrders, setCustomerOrders] = useState([])
     let resultt = []
-    const[currentPage, SetCurrentPage] = useState(1)
-    const[customersPerPage] = useState(2)
+    const [paginated, setPaginated] = useState();
+    const [currentPage, setCurrentPage] = useState(1);
+  
+
 
 
 
@@ -33,6 +37,8 @@ function CustomersWithOrders() {
             })
 
             setCustomerOrders(res.data.result);
+            setPaginated(_(res.data.result).slice(0).take(pageSize).value());
+        
 
         }
 
@@ -50,29 +56,60 @@ function CustomersWithOrders() {
         return false
     })
 
-    const indexOfLastName = currentPage + customersPerPage
-    const indexOfFirstName = indexOfLastName - customersPerPage
-    const currentName = uniques.slice(indexOfFirstName, indexOfLastName)
+    const pageCount = uniques ? Math.ceil(uniques.length / pageSize) : 0;
+
+  if (pageCount === 1) return null;
+
+  const pages = _.range(1, pageCount + 1);
 
 
+  const pagination = (pageNo) => {
+    setCurrentPage(pageNo)
+    const startIndex = (pageNo -1) * pageSize
+    const paginate = _(customerOrders).slice(startIndex).take(pageSize).value()
+    setPaginated(paginate)
 
-const paginate = (pageNumber) => SetCurrentPage(pageNumber)
 
+  }
+
+if(uniques.length === 0) return null
+
+    
     
     return(<>
     <h1 className="text-center">Customers With Orders</h1>
 
     
         {
-       Array.from(currentName).map((customerOrder) => (
+       Array.from(paginated).map((customerOrder) => (
                  <CustomerWithOrder customer={customerOrder} users={users} />
             )
             )
         
     
-    }    
+    }   
+    <div style={{padding: "10"}}>
 
-    <Pagination currentPage={currentPage} totalCustomers={currentName.length} paginate={paginate} />    
+    </div>
+
+    
+<nav className="d-flex justify-content-center">
+        <ul className="pagination">
+          {pages.map((page, index) => (
+            <li
+              className={
+                page === currentPage ? "page-item active" : "page-item"
+              }
+              key={index}
+            >
+            <p className="page-link" onClick={() => pagination(page)} > {page} </p>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+
+    
     </>)
 }
 

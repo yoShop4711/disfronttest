@@ -8,7 +8,7 @@ import _ from "lodash";
 
 
 
-const pageSize = 2;
+const pageSize = 3;
 
 
 function MyOrders() {
