@@ -2,8 +2,13 @@ import axios from "axios"
 import {  useEffect, useState, useContext } from "react"
 import { GlobalState } from "../../GlobalState"
 import AllOrders from "./AllOrders"
-import OrdersPagination from "./OrdersPagination"
 import "./products.css"
+import _ from "lodash";
+
+
+
+
+const pageSize = 2;
 
 
 function MyOrders() {
@@ -11,8 +16,10 @@ function MyOrders() {
   const state =  useContext(GlobalState)
   const token = state.token
   const[items, setItems] = useState([])
-  const[currentPage, SetCurrentPage] = useState(1)
-  const[ordersPerPage] = useState(3)
+  const [paginated, setPaginated] = useState();
+  const [currentPage, setCurrentPage] = useState(1);
+
+  
   
 
   useEffect(() => {
@@ -26,6 +33,8 @@ function MyOrders() {
         })
 
         setItems(res.data.result);
+        setPaginated(_(res.data.result).slice(0).take(pageSize).value());
+                
 
 
 
@@ -38,14 +47,24 @@ function MyOrders() {
   }, [token])
 
 
-  const indexOfLastName = currentPage + ordersPerPage
-const indexOfFirstName = indexOfLastName - ordersPerPage
-const orderItems = items.slice(indexOfFirstName, indexOfLastName)
+  const pageCount = items ? Math.ceil(items.length / pageSize) : 0;
+
+  if (pageCount === 1) return null;
+
+  const pages = _.range(1, pageCount + 1);
 
 
-const paginate = (pageNumber) => SetCurrentPage(pageNumber)
+  const pagination = (pageNo) => {
+    setCurrentPage(pageNo)
+    const startIndex = (pageNo -1) * pageSize
+    const paginate = _(items).slice(startIndex).take(pageSize).value()
+    setPaginated(paginate)
 
-  
+
+  }
+
+
+
 
 
 
@@ -55,8 +74,8 @@ const paginate = (pageNumber) => SetCurrentPage(pageNumber)
         
 
 
-     {
-        orderItems.map(item => {
+    {
+        paginated?.map(item => {
             return(
 
                 
@@ -79,9 +98,25 @@ const paginate = (pageNumber) => SetCurrentPage(pageNumber)
             )
         })
     }
+
+<nav className="d-flex justify-content-center">
+        <ul className="pagination">
+          {pages.map((page, index) => (
+            <li
+              className={
+                page === currentPage ? "page-item active" : "page-item"
+              }
+              key={index}
+            >
+            <p className="page-link" onClick={() => pagination(page)} > {page} </p>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
     
      </div>
-    <OrdersPagination currentPage={currentPage} totalOrders={orderItems.length} paginate={paginate} />
+    
     
     </>)
 
