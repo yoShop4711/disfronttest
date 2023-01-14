@@ -1,6 +1,7 @@
 import moment from "moment"
 import { useContext, useEffect, useState } from "react"
 import { GlobalState } from "../../GlobalState"
+import { Card } from "react-bootstrap"
 
 
 function CancelledItems({item, user, amount, status, updated}) {
@@ -71,15 +72,65 @@ function CancelledItems({item, user, amount, status, updated}) {
       if(buyer.length === 0) return null;
 
    
-      if(prods.length === 0) 
-      return <h2 style={{textAlign: "center", fontSize: "5rem"}}>No Orders</h2> 
+      if(prods.length === 0) return null
 
     
     
 
     return(
-<div className="container">
-        <div className="row row-cols-3">
+<div className="col-md-10 mx-auto ">
+
+<Card className=" my-3 p-2 flex-fill h-150 ">
+<Card.Img src={`data:image/jpg;base64, ${base64String}`}  className="img-responsive" variant="top" />
+<Card.Body>
+<Card.Text as="span">
+        seller:
+        </Card.Text>
+        <Card.Link href={`/user/${merchant._id}`}>
+        {merchant.fullname}
+        </Card.Link>
+        <div style={{padding: "5px"}}>
+
+        </div>
+        <Card.Text as="span">
+          buyer:
+        </Card.Text>
+        <Card.Link href={`/user/${buyer._id}`}>
+        {buyer.fullname}
+        </Card.Link>
+        <div style={{padding: "5px"}}>
+
+        </div>
+        <Card.Text as="p">
+         product: {prods.productName}  
+        </Card.Text>
+        <Card.Text as="p">
+          MK {amount}
+
+        </Card.Text>
+
+        <Card.Text as="p">
+        status: {status}
+        </Card.Text>
+
+        <Card.Text as="p">
+  number of products: {item.count}
+</Card.Text>
+<Card.Text as="p">
+Last updated {moment(updated).fromNow()}
+
+</Card.Text>
+
+</Card.Body>
+
+    </Card>
+
+
+
+
+
+
+        {/* <div className="row row-cols-3">
 <div className="col">
 
 
@@ -99,17 +150,11 @@ function CancelledItems({item, user, amount, status, updated}) {
     </div>
   </div>
 
-</div>
+</div> */}
 
 
 
         </div>
-
-    
-    
-    
-    </div>
-
 
     )
 }
