@@ -1,5 +1,7 @@
 import moment from "moment";
 import WishManageBtn from "./WishManageBtn";
+import { Card } from "react-bootstrap";
+
 
 function MyWishlist({wishlist}) {
 
@@ -13,7 +15,32 @@ function MyWishlist({wishlist}) {
         );
   
 
-    return(<div className="product_card">
+    return(
+        <>
+        <div className="col-md-11 mx-auto ">
+        <Card className=" my-3 p-2 flex-fill h-150 "> 
+      <Card.Img src={`data:image/jpg;base64, ${base64String}`}  className="img-responsive" variant="top" />
+      <Card.Body>
+        <Card.Text as="p">
+       product: {wishlist.productName}
+
+        </Card.Text>
+
+        <Card.Text as="p">
+     {wishlist.productDescription}
+
+        </Card.Text>
+
+      </Card.Body>
+
+      </Card>
+
+
+
+
+        </div>
+    
+    {/* <div className="product_card">
         <img  src={`data:image/jpg;base64, ${base64String}`} alt={wishlist.productName} />
         <div className="product_box">
         <h3> <em> {wishlist.productName} </em> </h3>
@@ -29,7 +56,9 @@ function MyWishlist({wishlist}) {
     
     
     
-    </div>)
+    </div> */}
+    
+    </>)
 }
 
 export default MyWishlist

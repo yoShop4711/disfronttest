@@ -44,6 +44,7 @@ function CreateWishlist() {
         })
 
         alert(res.data.msg);
+        window.location.href = "/my_wishlist"
 
     }
 
