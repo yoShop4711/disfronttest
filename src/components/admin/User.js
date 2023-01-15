@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react"
 import { GlobalState } from "../../GlobalState"
 import axios from "axios"
-import { useParams } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 import { Card } from "react-bootstrap"
 import "./user.css"
 
@@ -16,6 +16,7 @@ function User() {
 
 
     const {id} = useParams()
+    const navigate = useNavigate()
     
 
     useEffect(() => {
@@ -66,6 +67,11 @@ function User() {
           .reduce((data, byte) => data + String.fromCharCode(byte), '')
       );
       
+      const handleClick = () => {
+
+        navigate('/users_orders', {state: {identifier: single._id }})
+
+      }
 
        
 return(
@@ -79,8 +85,10 @@ return(
 <Card.Text as="p">username: {single.username}</Card.Text>
 <Card.Text as="p">email: {single.email}</Card.Text>
 <Card.Text as="p">location: {single.location}</Card.Text>
-<Card.Link href={`/user_status/${single._id}`}>change user status</Card.Link>
-<Card.Link href={`/delete_user/${single._id}`}>delete user</Card.Link>
+{single.role === 1 ? <Card.Link href="/show_merchant_products" className="d-block p-2" >merchant's products </Card.Link> : null}
+<Card.Link onClick={handleClick} className="d-block p-2">user's orders</Card.Link>
+<Card.Link href={`/user_status/${single._id}`} className="d-block p-2">change user status</Card.Link>
+<Card.Link href={`/delete_user/${single._id}`} className="d-block p-2">delete user</Card.Link>
 
 
 
