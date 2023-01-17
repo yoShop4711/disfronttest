@@ -12,6 +12,8 @@ function User() {
     const state = useContext(GlobalState)
     const[isAdmin] = state.userApi.isAdmin
 
+
+
     const token = state.token
 
 
@@ -24,7 +26,7 @@ function User() {
         const showUsers = async() => {
         
     
-                const res = await axios.get('https://newyoshopapi.onrender.com/auth/show_users', {
+                const res = await axios.get('/auth/show_users', {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }
@@ -67,9 +69,9 @@ function User() {
           .reduce((data, byte) => data + String.fromCharCode(byte), '')
       );
       
-      const handleClick = () => {
-
-        navigate('/users_orders', {state: {identifier: single._id }})
+      const handleClick = async (event) => {
+        
+        navigate('/users_orders', {state: {identifier: single._id } })
 
       }
 
@@ -85,7 +87,7 @@ return(
 <Card.Text as="p">username: {single.username}</Card.Text>
 <Card.Text as="p">email: {single.email}</Card.Text>
 <Card.Text as="p">location: {single.location}</Card.Text>
-{single.role === 1 ? <Card.Link href="/show_merchant_products" className="d-block p-2" >merchant's products </Card.Link> : null}
+{single.role === 1 ? <Card.Link href={`/show_merchant_products/${single._id}`} className="d-block p-2" >merchant's products </Card.Link> : null}
 <Card.Link onClick={handleClick} className="d-block p-2">user's orders</Card.Link>
 <Card.Link href={`/user_status/${single._id}`} className="d-block p-2">change user status</Card.Link>
 <Card.Link href={`/delete_user/${single._id}`} className="d-block p-2">delete user</Card.Link>

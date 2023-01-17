@@ -26,7 +26,7 @@ function MyOrders() {
 
     const getOrders = async() => {
 
-        const res = await axios.get("https://newyoshopapi.onrender.com/cart/show_carts", {
+        const res = await axios.get("/cart/show_carts", {
             headers: {
                 Authorization: `Bearer ${token}`
             }

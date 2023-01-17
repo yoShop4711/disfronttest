@@ -138,61 +138,6 @@ products.forEach(product => {
     </div>
 
 
-{/* <div className="product_card" style={{height: "150%"}}>
-
-<img  src={`data:image/jpg;base64, ${base64String}`} alt={singleOrders.productName} />
-
-
-        <div className="product_box">
-        <h2>Seller: <em> {merchant.fullname} </em></h2>
-       <p>Buyer: <em> {buyer.fullname} </em></p>
-       <p>Product: <em> {singleOrders.productName} </em> </p>
-        <p>Price: <em>MK{amount}</em></p>
-        <p >status: <em> {status} </em></p>
-        <p>number of products: <em>{order.count}</em> </p>
-        <p>Last updated {moment(updated).fromNow()}</p>
-
-
-
-
-
-
-
-        </div>
-    
-    
-    
-    </div>
- */}
-
- {/* <div className="container">    
- <div className="row">
-  <div className="col-md-6 col-lg-4">
-
-
-
- <div className="card  " style={{padding: "7px", margin: "7px", width: "18rem"}}>
- <img className="card-img-top" src={`data:image/jpg;base64, ${base64String}`} alt={singleOrders.productName} />
- <div className="card-body">
- <h2 className="card-title text-danger">Seller's name: <em> {merchant.fullname} </em></h2>
-   <h2 className="card-title">Buyer's name: <em> {buyer.fullname} </em></h2>
-  <h2>Product's name: <em> {singleOrders.productName} </em> </h2>
-  <h5 className="card-title">product price: <em>MK{amount}</em></h5>
-  <h5 className="card-title">product status: <em> {status} </em></h5>
-   <h5 className="card-title">number of products: <em>{order.count}</em> </h5>
-
- </div>
- <div className="card-footer">
-  <small className="text-muted">Last updated {moment(updated).fromNow()}</small>
-</div>
- </div>
-
- </div>
- 
-</div>
-</div> */}
-
-
 
 
  </>   

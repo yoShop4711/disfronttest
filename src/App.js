@@ -111,7 +111,7 @@ function App() {
 <Route path="/customer_orders" element={<CustomersOrders />} />
 <Route path="/buyer_profile/:id" element={<BuyerProfile />}  />
 <Route path="/customers_with_orders" element={<CustomersWithOrders />} />
-<Route path="/show_merchant_products" element={ <ShowMerchantProducts /> } />
+<Route path="/show_merchant_products/:id" element={ <ShowMerchantProducts /> } />
 <Route path="/users_orders" element={<UsersOrders /> } />
 
 

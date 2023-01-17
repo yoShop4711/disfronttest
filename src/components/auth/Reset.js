@@ -18,7 +18,7 @@ function Reset() {
 
         
 
-         await axios.put('https://newyoshopapi.onrender.com/auth/reset_password', {password}, {
+         await axios.put('/auth/reset_password', {password}, {
             headers: {Authorization: `Bearer ${token}`}
          })
 

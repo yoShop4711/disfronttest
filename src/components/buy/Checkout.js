@@ -18,7 +18,7 @@ const amount =  getTotal(products)
 
 const createOrder = async () => {
 
-  const res = await axios.post("https://newyoshopapi.onrender.com/cart/create_order", {products, amount}, {
+  const res = await axios.post("/cart/create_order", {products, amount}, {
     headers: {
       Authorization: `Bearer ${token}`
     }

@@ -23,7 +23,7 @@ function Delivered() {
 
   useEffect(() => {
     const getDelivered = async () => {
-      const res = await axios.get("https://newyoshopapi.onrender.com/cart/show_delivered", {
+      const res = await axios.get("/cart/show_delivered", {
         headers: {
           Authorization: `Bearer ${token}`,
         },

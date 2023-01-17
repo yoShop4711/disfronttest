@@ -14,7 +14,7 @@ useEffect(() => {
 
     const getAllWishes = async() => {
 
-        const res = await axios.get('https://newyoshopapi.onrender.com/wish/all_customer_wishes', {
+        const res = await axios.get('/wish/all_customer_wishes', {
             headers: {
                 Authorization: `Bearer ${token}`
             }

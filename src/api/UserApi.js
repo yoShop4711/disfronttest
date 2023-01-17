@@ -16,7 +16,7 @@ function UserApi() {
         if(token) {
             const getUser = async() => {
             try{
-                const res = await axios.get('https://newyoshopapi.onrender.com/auth/user', {
+                const res = await axios.get('/auth/user', {
                     headers: {Authorization: `Bearer ${token}`}
                 })
                 setIsLogged(true)

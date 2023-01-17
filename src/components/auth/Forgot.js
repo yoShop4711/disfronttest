@@ -20,9 +20,7 @@ function Forgot() {
 
     const handleSubmit = async() => {
         
-        const res = await axios.post('https://newyoshopapi.onrender.com/auth/forgot_password', {...values})
-
-        // console.log(res.data.accessToken);
+        const res = await axios.post('/auth/forgot_password', {...values});
         if(res.data.msg) {
             alert(res.data.msg)
         } else{

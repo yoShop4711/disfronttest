@@ -22,7 +22,7 @@ useEffect(() => {
 
     const getProducts = async() => {
 
-        const res = await axios.get(`https://newyoshopapi.onrender.com/api/show_products?${categor}&${sort}&title[regex]=${search}`)
+        const res = await axios.get(`/api/show_products?${categor}&${sort}&title[regex]=${search}`)
         setProducts(res.data.products)
         setResult(res.data.result)
         setPaginated(_(res.data.products).slice(0).take(pageSize).value());
