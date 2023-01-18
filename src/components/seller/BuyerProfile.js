@@ -68,9 +68,9 @@ function BuyerProfile() {
 
     return(
 
-<div className="col d-flex justify-content-center centered">
-    <Card style={{width: '18rem'}}>
-        <Card.Img variant="top" src={`data:image/jpg;base64, ${base64String}`}  />
+<div className="col-md-6 mx-auto text-center">
+    <Card>
+        <Card.Img variant="top" src={`data:image/jpg;base64, ${base64String}`} style={{width: "100%", height: "100%"}}    />
 
         <Card.Body>
             <Card.Title>{single.fullname}</Card.Title>
