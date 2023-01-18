@@ -19,7 +19,7 @@ function BuyerProfile() {
         const showUsers = async() => {
         
     
-                const res = await axios.get('https://newyoshopapi.onrender.com/auth/show_users', {
+                const res = await axios.get('/auth/show_users', {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }

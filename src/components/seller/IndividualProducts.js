@@ -1,5 +1,5 @@
-import BtnRender from "./BtnRender";
-import "./individual.css"
+import { Card} from "react-bootstrap"
+
 
 
 function IndividualProducts({product}) {
@@ -17,28 +17,35 @@ function IndividualProducts({product}) {
 
 
     return(<>
+    <div className="col-md-10 mx-auto ">
+    <Card className=" my-3 p-2 flex-fill h-150 "> 
+      <Card.Img src={`data:image/jpg;base64, ${base64String}`}  className="img-responsive" variant="top" />
+      <Card.Body>
+      <Card.Text as="p">
 
-<div className="product_card">
-        
+        {product.productName}
+      </Card.Text>
+    <Card.Text as="p">
+   MK {product.productPrice}
+    </Card.Text>
+    <Card.Text as="p">
+    {product.productDescription}
+    </Card.Text>
+    <Card.Link href={`/edit_product/${product._id}`}>
+      edit product
+    </Card.Link>
+    <Card.Link href={`/delete_product/${product._id}`}>
+        delete product
+    </Card.Link>
 
-
-        <img src={`data:image/jpg;base64, ${base64String}`}  alt={product.productName} />
-
-
-        <div className="product_box">
-            <h2>{product.productName}</h2>
-            <span>MK{product.productPrice}</span>
-            <p>{product.productDescription}</p>
-            </div>
-
-            <BtnRender product={product} />
+        </Card.Body>
+        </Card>
 
 
         </div>
 
-   
-    
-    
+
+
     
     </>)
 }

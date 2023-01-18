@@ -1,7 +1,8 @@
 import { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom"
 import moment from "moment";
 import { GlobalState } from "../../GlobalState";
+import { Card} from "react-bootstrap"
+
 
 
 function FullOrders({prods, items}) {
@@ -56,24 +57,49 @@ function FullOrders({prods, items}) {
 
 
 
-    return(<div className="product_card">
-<img  src={`data:image/jpg;base64, ${base64String}`} alt={goods.productName} />
+    return(<>
+
+<div className="col-md-10 mx-auto ">
+    <Card className=" my-3 p-2 flex-fill h-150 "> 
+      <Card.Img src={`data:image/jpg;base64, ${base64String}`}  className="img-responsive" variant="top" />
+      <Card.Body>
+        <Card.Text as="p">
+          Buyer
+        </Card.Text>
+      <Card.Link href={`/buyer_profile/${items.user}`}>
+{buyer.fullname}
+        
+      </Card.Link>
+    <Card.Text as="p">
+    product:  {goods.productName} 
+    </Card.Text>
+    <Card.Text as="p">
+    price: MK {items.amount}
+    </Card.Text>
+    <Card.Text as="p">
+    status:  {items.status}
+    </Card.Text>
+    <Card.Text as="p">
+    number of products: {prods.count}
+    </Card.Text>
+    <Card.Text as="p">
+    Last updated {moment(items.updatedAt).fromNow()}
+    </Card.Text>
 
 
-<div className="product_box">
-        <h2><Link to={`/buyer_profile/${items.user}`}>Buyer</Link>: <em> {buyer.fullname} </em></h2>
-        <p>product: <em> {goods.productName} </em> </p>
-        <p>price: <em>MK{items.amount}</em></p>
-        <p >status: <em> {items.status} </em></p>
-        <p>number of products: <em>{prods.count}</em> </p>
-        <small>Last updated {moment(items.updatedAt).fromNow()}</small>
+        </Card.Body>
+        </Card>
+
 
         </div>
 
 
 
 
-    </div>)
+
+
+
+    </>)
 }
 
 export default FullOrders

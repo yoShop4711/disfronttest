@@ -33,7 +33,7 @@ function EditProduct() {
 
     const updateProduct = async() => {
 
-        const res = await axios.put(`https://newyoshopapi.onrender.com/api/update_product/${id}`, {...values}, {
+        const res = await axios.put(`/api/update_product/${id}`, {...values}, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
