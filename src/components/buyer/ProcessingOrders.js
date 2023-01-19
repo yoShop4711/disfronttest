@@ -15,7 +15,7 @@ function ProcessingOrders() {
 
    useEffect(() => {
      const getProcessing = async () => {
-       const res = await axios.get("https://newyoshopapi.onrender.com/cart/show_user_processing_carts", {
+       const res = await axios.get("/cart/show_user_processing_carts", {
          headers: {
            Authorization: `Bearer ${token}`,
          },

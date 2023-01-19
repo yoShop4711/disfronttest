@@ -1,5 +1,4 @@
 import moment from "moment";
-import WishManageBtn from "./WishManageBtn";
 import { Card } from "react-bootstrap";
 
 
@@ -19,7 +18,7 @@ function MyWishlist({wishlist}) {
         <>
         <div className="col-md-11 mx-auto ">
         <Card className=" my-3 p-2 flex-fill h-150 "> 
-      <Card.Img src={`data:image/jpg;base64, ${base64String}`}  className="img-responsive" variant="top" />
+      <Card.Img src={`data:image/jpg;base64, ${base64String}`} style={{width: "100%"}}  className="img-responsive" variant="top" />
       <Card.Body>
         <Card.Text as="p">
        product: {wishlist.productName}
@@ -30,7 +29,17 @@ function MyWishlist({wishlist}) {
      {wishlist.productDescription}
 
         </Card.Text>
+        <Card.Text as="p">
+        wish created at {moment(wishlist.createdAt).fromNow()}
+        </Card.Text>
 
+        <Card.Link href={`/update_wishlist/${wishlist._id}`}>
+          update wishlist
+    </Card.Link>
+    <Card.Link href={`/delete_wishlist/${wishlist._id}`}>
+       delete wishlist
+    </Card.Link>
+    
       </Card.Body>
 
       </Card>
@@ -40,23 +49,6 @@ function MyWishlist({wishlist}) {
 
         </div>
     
-    {/* <div className="product_card">
-        <img  src={`data:image/jpg;base64, ${base64String}`} alt={wishlist.productName} />
-        <div className="product_box">
-        <h3> <em> {wishlist.productName} </em> </h3>
-        <p><em> {wishlist.productDescription} </em> </p>
-
-
-        <small>Last updated {moment(wishlist.createdAt).fromNow()}</small>
-
-
-        </div>
-
-    <WishManageBtn wishlist={wishlist} />
-    
-    
-    
-    </div> */}
     
     </>)
 }

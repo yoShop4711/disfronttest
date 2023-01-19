@@ -1,5 +1,5 @@
 export const updateOrderStatus = (token, id, status) => {
-  return fetch(`https://newyoshopapi.onrender.com/cart/update_status/${id}`, {
+  return fetch(`/cart/update_status/${id}`, {
     method: "PUT",
     headers: {
       Accept: "application/json",

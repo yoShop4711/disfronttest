@@ -11,7 +11,7 @@ function DeleteWishlists() {
    const navigate = useNavigate
 
     const deleteUser = async() => {
-        const res = await axios.delete(`https://newyoshopapi.onrender.com/wish/delete_wish/${id}`, {
+        const res = await axios.delete(`/wish/delete_wish/${id}`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }

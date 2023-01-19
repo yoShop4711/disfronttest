@@ -1,82 +1,103 @@
-import axios from 'axios'
-import { useContext, useState } from 'react'
-import { GlobalState } from '../../GlobalState'
-import './wishlist.css'
+import axios from "axios";
+import { useContext, useState } from "react";
+import { GlobalState } from "../../GlobalState";
+import { Container, Form, Row, Col, Button } from "react-bootstrap";
+
 
 function CreateWishlist() {
-   const state = useContext(GlobalState)
-   const[wishlist, setWishlist]   =   useState({
-                    productName: "",
-                    productDescription: "",
-                    productImage: false
-                  })
+  const state = useContext(GlobalState);
+  const [wishlist, setWishlist] = useState({
+    productName: "",
+    productDescription: "",
+    productImage: false,
+  });
 
-    const [isBuyer] = state.userApi.isBuyer   
-    const token = state.token
+  const [isBuyer] = state.userApi.isBuyer;
+  const token = state.token;
 
-    const handleChangeInput = (event )=>{ 
-        if(event.target.name === "productImage") {
-            setWishlist({[event.target.name]: event.target.files[0]})
-
-        } else{
-        const {name, value} = event.target
-        setWishlist({...wishlist, [name]:value}) }
+  const handleChangeInput = (event) => {
+    if (event.target.name === "productImage") {
+      setWishlist({ [event.target.name]: event.target.files[0] });
+    } else {
+      const { name, value } = event.target;
+      setWishlist({ ...wishlist, [name]: value });
     }
+  };
 
+  const handleSubmit = async (event) => {
+    event.preventDefault();
 
-    const handleSubmit = async(event) => {
-        event.preventDefault()
+    if (!isBuyer) return alert("you are not a seller");
 
-        if(!isBuyer) return alert("you are not a seller")
+    let formData = new FormData();
 
-        let formData = new FormData()
+    formData.append("productName", wishlist.productName);
+    formData.append("productDescription", wishlist.productDescription);
+    formData.append("productImage", wishlist.productImage);
+
+    const res = await axios.post("/wish/create_wishlist", formData, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    alert(res.data.msg);
+    window.location.href = "/my_wishlist";
+  };
+
+  return (
+    <>
+      <Container>
+        <Row className="justify-content-md-center">
+          <Col xs={12} md={6}>
+            <h1>Create Your Wishlist</h1>
+            <Form onSubmit={handleSubmit}>
+              <Form.Group className="mb-3" controlId="formBasicUserimage">
+                <Form.Label>upload your photo</Form.Label>
+                <Form.Control
+                  type="file"
+                  name="productImage"
+                  onChange={handleChangeInput}
+                />
+              </Form.Group>
+
+              <Form.Group className="mb-3" controlId="formBasicProductName">
+                <Form.Label>enter your product name</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="productName"
+                  value={wishlist.productName}
+                  onChange={handleChangeInput}
+                  placeholder="enter your product name"
+                />
+              </Form.Group>
+
+              <Form.Group
+                className="mb-3"
+                controlId="formBasicPrductDescription"
+              >
+                <Form.Label>enter your product description </Form.Label>
+                <Form.Control
+                  as="textarea"
+                  rows={3}
+                  name="productDescription"
+                  value={wishlist.productDescription}
+                  onChange={handleChangeInput}
+                  placeholder="enter your product description"
+                />
+              </Form.Group>
+              <Button variant="warning" type="submit">
+        create your wishlist
+      </Button>
+
+            </Form>
+          </Col>
+        </Row>
+      </Container>
+    </>
+
     
-        formData.append('productName', wishlist.productName)
-        formData.append('productDescription', wishlist.productDescription)
-        formData.append('productImage', wishlist.productImage)
-
-
-        const res = await axios.post('https://newyoshopapi.onrender.com/wish/create_wishlist', formData, {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-
-        })
-
-        alert(res.data.msg);
-        window.location.href = "/my_wishlist"
-
-    }
-
-       
-
-
-    return(<div className='create_product'>
-        <h1 className='text-center'>create your wishlist</h1>
-         <form onSubmit={handleSubmit} encType="multipart/form-data">
-         <div className="row">
-            <div>
-                <input type="file" name="productImage"   onChange={handleChangeInput}    />
-                
-              </div>
-              </div>
-
-              <div className="row">
-                    <label htmlFor="productName">Product Name</label>
-                    <input type="text" name="productName" value={wishlist.productName} onChange={handleChangeInput} id="productName" required />
-                </div>
-
-                <div className="row">
-                    <label htmlFor="description">Product Description</label>
-                    <textarea type="text" name="productDescription" value={wishlist.productDescription} onChange={handleChangeInput} id="productionDescription" required
-                 rows="5"  />
-                </div>
-
-                <button type="submit">Create</button>
-
-         </form>
-    
-    </div>)
+  );
 }
 
-export default CreateWishlist
+export default CreateWishlist;

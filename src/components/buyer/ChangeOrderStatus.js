@@ -18,7 +18,7 @@ function ChangeOrderStatus() {
   useEffect(() => {
 
     const getEnam = async () => {
-      const res = await axios.get('https://newyoshopapi.onrender.com/cart/show_status', {
+      const res = await axios.get('/cart/show_status', {
         headers: {
           Authorization: `Bearer ${token}`
         }

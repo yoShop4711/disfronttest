@@ -15,7 +15,7 @@ function DeliveredOrders() {
 
    useEffect(() => {
      const getDelivered = async () => {
-       const res = await axios.get("https://newyoshopapi.onrender.com/cart/show_user_delivered_carts", {
+       const res = await axios.get("/cart/show_user_delivered_carts", {
          headers: {
            Authorization: `Bearer ${token}`,
          },

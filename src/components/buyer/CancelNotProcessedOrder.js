@@ -1,4 +1,3 @@
-
 import { useContext, useEffect, useState } from "react"
 import { GlobalState } from "../../GlobalState"
 import BtnRender from "./BtnRender"
