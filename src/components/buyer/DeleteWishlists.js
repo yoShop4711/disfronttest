@@ -1,5 +1,5 @@
 import { useContext } from "react"
-import { useNavigate, useParams } from "react-router-dom"
+import {  useParams } from "react-router-dom"
 import { GlobalState } from "../../GlobalState"
 import { Button } from "react-bootstrap"
 import axios from "axios"
@@ -8,7 +8,7 @@ function DeleteWishlists() {
     const state =  useContext(GlobalState)
     const token = state.token
     const {id} = useParams()
-   const navigate = useNavigate
+
 
     const deleteUser = async() => {
         const res = await axios.delete(`/wish/delete_wish/${id}`, {
@@ -27,9 +27,9 @@ function DeleteWishlists() {
     
     return(<div className="text-center centered">
 
-    <p>press button to delete user</p>
+    <p>press button to delete wishlist</p>
     
-    <Button onClick={deleteUser} className="btn btn-danger" >delete user</Button>
+    <Button onClick={deleteUser} className="btn btn-danger" >delete wishlist</Button>
     
     
     </div>

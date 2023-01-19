@@ -4,11 +4,12 @@ import { GlobalState } from "../../GlobalState"
 import MyWishlist from "./MyWishList"
 import './products.css'
 import _ from "lodash";
+import Loading from "../products/Loading"
 
 
 
 
-const pageSize = 3;
+const pageSize = 3 ;
 
 
 function MyWishlists() {
@@ -37,7 +38,7 @@ function MyWishlists() {
     getWishLists()
 
    }, [token])
-   const pageCount = wishlists ? Math.ceil(wishlists.length / pageSize) : 0;
+   const pageCount = wishlists ? Math.ceil(wishlists.length / pageSize.length) : 0;
 
    if (pageCount === 1) return null;
  

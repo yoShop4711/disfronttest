@@ -38,7 +38,7 @@ function Cancelled() {
 
     }, [token])
 
-    const pageCount = canceLled ? Math.ceil(canceLled.length / pageSize) : 0;
+    const pageCount = canceLled ? Math.ceil(canceLled.length / pageSize.length) : 0;
 
     if (pageCount === 1) return null;
   

@@ -36,7 +36,7 @@ useEffect(() => {
 
 }, [callback, name, sort, search,  categor])
 
-const pageCount = products ? Math.ceil(products.length / pageSize) : 0;
+const pageCount = products ? Math.ceil(products.length / pageSize.length) : 0;
 
 if (pageCount === 1) return null;
 

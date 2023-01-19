@@ -43,7 +43,7 @@ function Processing() {
 
     }, [token])
 
-    const pageCount = proceSsing ? Math.ceil(proceSsing.length / pageSize) : 0;
+    const pageCount = proceSsing ? Math.ceil(proceSsing.length / pageSize.length) : 0;
 
   if (pageCount === 1) return null;
 

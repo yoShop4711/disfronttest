@@ -44,7 +44,7 @@ function ShowMerchantProducts() {
 
     }, [id, token])
 
-    const pageCount = items ? Math.ceil(items.length / pageSize) : 0;
+    const pageCount = items ? Math.ceil(items.length / pageSize.length) : 0;
 
     if (pageCount === 1) return null;
   
