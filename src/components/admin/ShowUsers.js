@@ -38,7 +38,7 @@ function ShowUsers() {
     showUsers();
   }, [token, isAdmin]);
 
-  const pageCount = users ? Math.ceil(users.length / pageSize.length) : 0;
+  const pageCount = users ? Math.ceil(users.length / pageSize) : 0;
 
   if (pageCount === 1) return null;
 

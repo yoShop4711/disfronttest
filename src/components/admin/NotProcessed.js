@@ -42,7 +42,7 @@ function NotProcessed() {
 
     }, [token])
 
-    const pageCount = notProceSsed ? Math.ceil(notProceSsed.length / pageSize.length) : 0;
+    const pageCount = notProceSsed ? Math.ceil(notProceSsed.length / pageSize) : 0;
 
   if (pageCount === 1) return null;
 

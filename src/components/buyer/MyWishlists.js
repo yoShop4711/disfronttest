@@ -38,7 +38,7 @@ function MyWishlists() {
     getWishLists()
 
    }, [token])
-   const pageCount = wishlists ? Math.ceil(wishlists.length / pageSize.length) : 0;
+   const pageCount = wishlists ? Math.ceil(wishlists.length / pageSize) : 0;
 
    if (pageCount === 1) return null;
  

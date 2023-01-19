@@ -43,7 +43,7 @@ function ShowSellers() {
 
     
 
-    const pageCount = sellers ? Math.ceil(sellers.length / pageSize.length) : 0;
+    const pageCount = sellers ? Math.ceil(sellers.length / pageSize) : 0;
 
   if (pageCount === 1) return null;
 

@@ -36,7 +36,7 @@ function Delivered() {
     getDelivered();
   }, [token]);
 
-  const pageCount = deliVered ? Math.ceil(deliVered.length / pageSize.length) : 0;
+  const pageCount = deliVered ? Math.ceil(deliVered.length / pageSize) : 0;
 
   if (pageCount === 1) return null;
 

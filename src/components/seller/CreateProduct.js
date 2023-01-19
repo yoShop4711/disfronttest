@@ -3,7 +3,7 @@ import { useState, useContext } from "react";
 import { GlobalState } from "../../GlobalState";
 import { Container, Form, Row, Col, Button } from "react-bootstrap";
 
-// import "./createproduct.css"
+
 
 function CreateProduct() {
   const state = useContext(GlobalState);
