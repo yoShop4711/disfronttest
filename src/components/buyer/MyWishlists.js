@@ -10,7 +10,7 @@ import Loading from "../products/Loading"
 
 
 const pageSize = 3 ;
-
+const pageSized = 1
 
 function MyWishlists() {
 
@@ -38,9 +38,8 @@ function MyWishlists() {
     getWishLists()
 
    }, [token])
-   const pageCount = wishlists ? Math.ceil(wishlists.length / pageSize) : 0;
-
-   if (pageCount === 1) return null;
+   const pageCount =  wishlists ? Math.ceil(wishlists.length / pageSize) : 0;
+   
  
    const pages = _.range(1, pageCount + 1);
  
