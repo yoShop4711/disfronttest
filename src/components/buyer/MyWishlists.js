@@ -10,7 +10,7 @@ import Loading from "../products/Loading"
 
 
 const pageSize = 3 ;
-const pageSized = 1
+
 
 function MyWishlists() {
 
