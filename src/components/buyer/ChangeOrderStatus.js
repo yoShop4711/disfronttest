@@ -2,7 +2,8 @@ import axios from "axios";
 import {  useState, useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { GlobalState } from "../../GlobalState";
-import "./createproduct.css"
+import { Container,  Row, Col, Button, Form } from 'react-bootstrap';
+
 
 
 function ChangeOrderStatus() {
@@ -41,14 +42,17 @@ function ChangeOrderStatus() {
 
   
 
-    const updateOrder = async() => {
-        const res = await axios.put(`https://newyoshopapi.onrender.com/cart/update_status/${id}`, {status}, {
+    const updateOrder = async(event) => {
+      event.preventDefault()
+         await axios.put(`https://newyoshopapi.onrender.com/cart/update_status/${id}`, {status}, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
         })
 
-        console.log(res);
+        alert("order cancelled successfully")
+
+        window.location.href="/cancel_not_processed_carts"
 
     }
 
@@ -57,20 +61,32 @@ function ChangeOrderStatus() {
   
     
     return(
-      <div>
-      <select name="status" value={status} onChange={handleChangeInput}>
+      <Container>
+        <Row className="justify-content-md-center">
+          <Col xs={12} md={6}>
+
+            <h1>cancel this order..</h1>
+<Form onSubmit={updateOrder}>
+  <Form.Group>
+      <Form.Select name="status" value={status} onChange={handleChangeInput}>
         <option value="">
           select a category
 
         </option>
         <option>{enam[3]}</option>
 
-      </select>
+      </Form.Select>
+      </Form.Group>
+      <br>
+      </br>
 
-<button type="submit" onClick={updateOrder}>submit</button>
+<Button variant="danger" type="submit" >submit</Button>
 
+</Form>
+</Col>
+</Row>
 
-    </div>
+    </Container>
 
 
 

@@ -1,6 +1,8 @@
 import moment from "moment";
 import { useContext, useEffect, useState } from "react";
 import { GlobalState } from "../../GlobalState";
+import { Card } from "react-bootstrap";
+
 
 
 function AllWishlist({allWishlist}) {
@@ -37,23 +39,35 @@ function AllWishlist({allWishlist}) {
         );
   
 
-    return(<div className="product_card">
-        <img  src={`data:image/jpg;base64, ${base64String}`} alt={allWishlist.productName} />
+    return(
+        <>
+        <div className="col-md-11 mx-auto ">
+        <Card className=" my-3 p-2 flex-fill h-150 "> 
+      <Card.Img src={`data:image/jpg;base64, ${base64String}`} style={{width: "100%"}}  className="img-responsive" variant="top" />
+      <Card.Body>
+        <Card.Text as="p">
+        wish by:  {wishCreator.fullname}
+        </Card.Text>
 
-        <div className="product_box">
-        <h2 className="text-danger">wish by: <em> {wishCreator.fullname} </em></h2>
-        <h3> <em> {allWishlist.productName} </em> </h3>
-        <p><em> {allWishlist.productDescription} </em> </p>
+        <Card.Text as="p">
+        {allWishlist.productName}
+        </Card.Text>
+        <Card.Text as="p">
+        Last updated {moment(allWishlist.createdAt).fromNow()}
+        </Card.Text>
 
 
-        <small>Last updated {moment(allWishlist.createdAt).fromNow()}</small>
-
-
+        </Card.Body>
+        </Card>
         </div>
-
+        
+        
+        
+        </>
     
     
-    </div>)
+    
+    )
 }
 
 export default AllWishlist

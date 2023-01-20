@@ -6,7 +6,7 @@ function CancelCarts() {
         <table className="table">
             <thead>
             <th scope="col"><Link to="/cancel_not_processed_carts">Not Processed</Link>  </th>
-            <th scope="col"><Link to="/cancel_my_processing_carts">Processing</Link></th>
+            {/* <th scope="col"><Link to="/cancel_my_processing_carts">Processing</Link></th> */}
             </thead>
 
 

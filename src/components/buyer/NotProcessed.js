@@ -1,6 +1,7 @@
 import moment from "moment"
 import { useContext, useEffect, useState } from "react"
 import { GlobalState } from "../../GlobalState"
+import { Card } from "react-bootstrap";
 
 
 
@@ -51,30 +52,39 @@ function NotProcessed({item, amount, status, updated}) {
   
     
 
-    return(<div className="product_card">
+    return(
 
-<img  src={`data:image/jpg;base64, ${base64String}`} alt={prods.productName} />
+        <>
+        <div className="col-md-11 mx-auto ">
+        <Card className=" my-3 p-2 flex-fill h-150 "> 
+      <Card.Img src={`data:image/jpg;base64, ${base64String}`} style={{width: "100%"}}  className="img-responsive" variant="top" />
+      <Card.Body>
+        <Card.Text as="p">
+        Seller:  {merchant.fullname}
+        </Card.Text>
+        <Card.Text as="p">
+        Product:  {prods.productName} 
+        </Card.Text>
+        <Card.Text as="p">
+        Price: MK {amount}
+        </Card.Text>
+        <Card.Text as="p">
+        status:  {status}
+        </Card.Text>
+
+        <Card.Text as="p">
+        order placed on {moment(updated).fromNow()}
+        </Card.Text>
 
 
-        <div className="product_box">
-        <h2>Seller: <em> {merchant.fullname} </em></h2>
-        <h3>Product: <em> {prods.productName} </em> </h3>
-        <h5>Price: <em>MK{amount}</em></h5>
-        <h5 >status: <em> {status} </em></h5>
-        <h5>number of products: <em>{item.count}</em> </h5>
-        <small>Last updated {moment(updated).fromNow()}</small>
 
-
-
-
-
-
-
+      </Card.Body>
+        
+        </Card>
         </div>
-    
-    
-    
-    </div>)
+        
+        </>
+    )
 }
 
 export default NotProcessed

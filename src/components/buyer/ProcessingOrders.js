@@ -3,15 +3,24 @@ import { GlobalState } from "../../GlobalState"
 import axios from "axios"
 import "./products.css"
 import ProcessingOrder from "./ProcessingOrder"
+import _ from "lodash";
+import Loading from "../products/Loading"
+
+
+
+
+const pageSize = 3 ;
+
 
 
 function ProcessingOrders() {
      
    const state = useContext(GlobalState)
    const token = state.token
-
-
    const [processingOrders, setProcessingOrder] = useState([]);
+   const [paginated, setPaginated] = useState();
+   const [currentPage, setCurrentPage] = useState(1);
+
 
    useEffect(() => {
      const getProcessing = async () => {
@@ -22,16 +31,40 @@ function ProcessingOrders() {
        });
  
     setProcessingOrder(res.data.orders);
+    setPaginated(_(res.data.orders).slice(0).take(pageSize).value());
      };
      getProcessing();
    }, [token]);
+
+   const pageCount =  processingOrders ? Math.ceil(processingOrders.length / pageSize) : 0;
+   
+ 
+   const pages = _.range(1, pageCount + 1);
+ 
+ 
+   const pagination = (pageNo) => {
+     setCurrentPage(pageNo)
+     const startIndex = (pageNo -1) * pageSize
+     const paginate = _(processingOrders).slice(startIndex).take(pageSize).value()
+     setPaginated(paginate)
+ 
+ 
+   }
+ 
+ 
+ 
+ 
+ if(processingOrders.length === 0) {
+    return <Loading />
+ }
+
  
 
      
     return(<div className="products">
         
 
-{processingOrders.map((order) => {
+{paginated?.map((order) => {
         return order.products.map((item, index) => {
           return (
             <ProcessingOrder
@@ -44,6 +77,24 @@ function ProcessingOrders() {
           );
         });
       })}
+
+<br></br>
+
+<nav className="d-flex justify-content-center">
+<ul className="pagination">
+  {pages.map((page, index) => (
+    <li
+      className={
+        page === currentPage ? "page-item active" : "page-item"
+      }
+      key={index}
+    >
+    <p className="page-link" onClick={() => pagination(page)} > {page} </p>
+    </li>
+  ))}
+</ul>
+</nav>
+
 
     
 

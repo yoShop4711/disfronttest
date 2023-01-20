@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react"
 import { GlobalState } from "../../GlobalState"
-import BtnRender from "./BtnRender"
+import { Card } from "react-bootstrap";
+
 
 
 function CancelNotProcessedOrder({item, amount, order}) {
@@ -54,22 +55,32 @@ function CancelNotProcessedOrder({item, amount, order}) {
 
 
     return(
-        <div className="product_card">
+        <>
+        <div className="col-md-11 mx-auto ">
+        <Card className=" my-3 p-2 flex-fill h-150 "> 
+      <Card.Img src={`data:image/jpg;base64, ${base64String}`} style={{width: "100%"}}  className="img-responsive" variant="top" />
+      <Card.Body>
+        <Card.Text as="p">
+        Seller:  {merchant.fullname}
+        </Card.Text>
+        <Card.Text as="p">
+        Product:  {prods.productName} 
+        </Card.Text>
+        <Card.Text as="p">
+        Price: MK {amount}
+        </Card.Text>
+        <Card.Link href={`/change_order_status/${order._id}`}>
+        view and cancel
+        </Card.Link> 
 
-<img  src={`data:image/jpg;base64, ${base64String}`} alt={prods.productName} />
-
-
-        <div className="product_box">
-        <h2>Seller: <em> {merchant.fullname} </em></h2>
-        <h3>Product: <em> {prods.productName} </em> </h3>
-        <h5>Price: <em>MK{amount}</em></h5>
-    
-
+      </Card.Body>
+        
+        </Card>
         </div>
-    <BtnRender order={order} />
-    
-    
-    </div>
+        
+        </>
+
+
 
 
     )
