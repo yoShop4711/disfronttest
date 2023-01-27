@@ -44,7 +44,7 @@ function NotProcessed() {
 
     const pageCount = notProceSsed ? Math.ceil(notProceSsed.length / pageSize) : 0;
 
-  if (pageCount === 1) return null;
+  
 
   const pages = _.range(1, pageCount + 1);
 

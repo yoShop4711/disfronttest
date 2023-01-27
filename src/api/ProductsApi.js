@@ -10,35 +10,47 @@ function ProductsSApi() {
     const [products, setProducts] = useState([])
     const [callback, setCallback] = useState(false)
     const [name, setName] = useState('')
-    const [sort, setSort] = useState('')
+    const [sort, setSort] = useState(false)
     const [categor, setCategory] = useState('')
     const [search, setSearch] = useState('')
-    const [result, setResult] = useState(0)
+    // const [result, setResult] = useState(0)
     const [paginated, setPaginated] = useState();
     const [currentPage, setCurrentPage] = useState(1);
 
-
-useEffect(() => {
-
-    const getProducts = async() => {
-
-        const res = await axios.get(`/api/show_products?${categor}&${sort}&title[regex]=${search}`)
-        setProducts(res.data.products)
-        setResult(res.data.result)
-        setPaginated(_(res.data.products).slice(0).take(pageSize).value());
+    const res =  axios.get(`/api/show_products?${categor}&${sort}&title[regex]=${search}`) 
+    useEffect( () => {
+        try  {
+    
+            
+                 const getProds  = async() => {
+                     
+                    const {data} = await   res
+    
+                    
+    
+                setProducts(data)
+                
+                setPaginated(_(data.products).slice(0).take(pageSize).value());
+                
+                
+        }
+    
+        getProds()
+    
         
+            
+        } catch (error) {
+            console.log(error)
+            
+        }
+    
         
+    
+    }, [res, callback, name, sort, search,  categor])
+    
+    
+const pageCount = products.products ? Math.ceil(products.products.length / pageSize) : 0;
 
-
-    }
-    getProducts()
-
-
-}, [callback, name, sort, search,  categor])
-
-const pageCount = products ? Math.ceil(products.length / pageSize) : 0;
-
-if (pageCount === 1) return null;
 
 const pages = _.range(1, pageCount + 1);
 
@@ -46,7 +58,7 @@ const pages = _.range(1, pageCount + 1);
 const pagination = (pageNo) => {
   setCurrentPage(pageNo)
   const startIndex = (pageNo -1) * pageSize
-  const paginate = _(products).slice(startIndex).take(pageSize).value()
+  const paginate = _(products.products).slice(startIndex).take(pageSize).value()
   setPaginated(paginate)
 
 
@@ -62,7 +74,6 @@ const pagination = (pageNo) => {
         sort: [sort, setSort],
         categor: [categor, setCategory],
         search: [search, setSearch],
-        result: [result, setResult],
         pagination: pagination,
         pages: pages,
         paginated: [paginated, setPaginated],

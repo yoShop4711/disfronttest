@@ -8,9 +8,9 @@ function CreateWishlist() {
   const state = useContext(GlobalState);
   const [wishlist, setWishlist] = useState({
     productName: "",
-    productDescription: "",
-    productImage: false,
-  });
+    productDescription: ""  });
+
+    let[productImage, setProductImage] = useState(null)
 
   const [isBuyer] = state.userApi.isBuyer;
   const token = state.token;
@@ -33,7 +33,7 @@ function CreateWishlist() {
 
     formData.append("productName", wishlist.productName);
     formData.append("productDescription", wishlist.productDescription);
-    formData.append("productImage", wishlist.productImage);
+    formData.append("productImage", productImage);
 
     const res = await axios.post("/wish/create_wishlist", formData, {
       headers: {
@@ -57,7 +57,7 @@ function CreateWishlist() {
                 <Form.Control
                   type="file"
                   name="productImage"
-                  onChange={handleChangeInput}
+                  onChange={event => setProductImage(event.target.files[0])}
                 />
               </Form.Group>
 

@@ -44,7 +44,7 @@ function ChangeOrderStatus() {
 
     const updateOrder = async(event) => {
       event.preventDefault()
-         await axios.put(`https://newyoshopapi.onrender.com/cart/update_status/${id}`, {status}, {
+         await axios.put(`/cart/update_status/${id}`, {status}, {
             headers: {
                 Authorization: `Bearer ${token}`
             }

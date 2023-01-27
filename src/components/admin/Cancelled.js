@@ -40,7 +40,7 @@ function Cancelled() {
 
     const pageCount = canceLled ? Math.ceil(canceLled.length / pageSize) : 0;
 
-    if (pageCount === 1) return null;
+    
   
     const pages = _.range(1, pageCount + 1);
   

@@ -40,7 +40,7 @@ function ShowUsers() {
 
   const pageCount = users ? Math.ceil(users.length / pageSize) : 0;
 
-  if (pageCount === 1) return null;
+
 
   const pages = _.range(1, pageCount + 1);
 
@@ -72,7 +72,7 @@ function ShowUsers() {
             </tr>
           </thead>
           <tbody>
-            {paginated.map((user, index) => {
+            {paginated?.map((user, index) => {
               return (
                 <tr key={index}>
                   <td>

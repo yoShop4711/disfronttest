@@ -29,10 +29,11 @@ function Products() {
 
 }
 
-if(products.length === 0) {
-  return <Loading />
 
-}
+if(products.products === null || products.products === undefined){ return <div>
+  <Loading />
+  
+  </div>}
 
 
 
@@ -53,12 +54,12 @@ if(products.length === 0) {
 
                 
 
-                <select value={sort} onChange={e => setSort(e.target.value)} >
+                 <select value={sort} onChange={e => setSort(e.target.value)} >
                     <option value=''>Newest</option>
                     <option value='sort=oldest'>Oldest</option>
                     <option value='sort=-productPrice'>Price: High-Low</option>
                     <option value='sort=productPrice'>Price: Low-High</option>
-                </select>
+                </select> 
 
                 
       

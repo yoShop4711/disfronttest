@@ -5,27 +5,27 @@ import { Container, Form, Row, Col, Button } from 'react-bootstrap';
 
 
 function Register() {
+
+  let inputRef;
+
   
   const [values, setValues] = useState({
     fullname: "",
     username: "",
     email: "",
     password: "",
-    userImage: false,
+    
     location: "",
     question: ""
 
   });
-
+const [userImage, setUserImage] = useState(null)
   const handleChange = (event) => {
-    if(event.target.name === "userImage") {
-      setValues({[event.target.name]: event.target.files[0]})
-
-    } else{
-    const {name, value} = event.target;
+  
+    const {name, value} = event.target; 
     setValues({...values, [name]:value})
 
-    }
+    
 
   };
 
@@ -38,7 +38,7 @@ function Register() {
     formData.append('username', values.username)
     formData.append('password', values.password)
     formData.append('email', values.email)
-    formData.append('userImage', values.userImage)
+    formData.append('userImage', userImage)
     formData.append('location', values.location)
     formData.append('question', values.question)
     
@@ -61,8 +61,8 @@ function Register() {
       <Form onSubmit={handleSubmit}>
       <Form.Group className="mb-3" controlId="formBasicUserimage">
         <Form.Label>upload your photo</Form.Label>
-        <Form.Control type="file" name="userImage"  onChange={handleChange}  />
-       
+        <Form.Control type="file" onChange={event => setUserImage(event.target.files[0])}   />
+        
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicFullname">

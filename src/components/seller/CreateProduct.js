@@ -13,22 +13,21 @@ function CreateProduct() {
     productDescription: "",
     productQuantity: "",
     productAvailability: "",
-    productImage: false,
     categor: "",
     productPrice: "",
   });
+
+  const[productImage, setProductImage] = useState(null)
 
   const [categories] = state.CategoriesApi.categories;
   const [isSeller] = state.userApi.isSeller;
   const token = state.token;
 
   const handleChangeInput = (event) => {
-    if (event.target.name === "productImage") {
-      setProduct({ [event.target.name]: event.target.files[0] });
-    } else {
+
       const { name, value } = event.target;
       setProduct({ ...product, [name]: value });
-    }
+    
   };
 
   const handleSubmit = async (event) => {
@@ -42,7 +41,7 @@ function CreateProduct() {
     formData.append("productDescription", product.productDescription);
     formData.append("productQuantity", product.productQuantity);
     formData.append("productAvailability", product.productAvailability);
-    formData.append("productImage", product.productImage);
+    formData.append("productImage", productImage);
     formData.append("categor", product.categor);
     formData.append("productPrice", product.productPrice);
 
@@ -65,8 +64,7 @@ function CreateProduct() {
                 <Form.Label>upload product photo</Form.Label>
                 <Form.Control
                   type="file"
-                  name="productImage"
-                  onChange={handleChangeInput}
+                  onChange={event => setProductImage(event.target.files[0])}
                 />
               </Form.Group>
 

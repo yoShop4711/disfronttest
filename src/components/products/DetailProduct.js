@@ -14,7 +14,7 @@ function  DetailProduct() {
    const state = useContext(GlobalState)
    const [products] = state.ProductsApi.products
    const [detailProduct, setDetailProduct] = useState([])
-   const[users, setUsers] = state.UsersApi.users
+   const[users] = state.UsersApi.users
    const[single, setSingle] = useState([])
    const navigate = useNavigate()
     const [redirect, setRedirect] = useState(false);
@@ -58,7 +58,7 @@ function  DetailProduct() {
    useEffect(() => {
 
     if(id) {
-        products.forEach(product => {
+        products.products.forEach(product => {
             if(product._id === id) setDetailProduct(product)
         })
 
@@ -120,7 +120,7 @@ function  DetailProduct() {
                 <h2>Related products</h2>
                 <div className="products">
                     {
-                        products.map(product => {
+                        products.products.map(product => {
                             return product.categor === detailProduct.categor 
                                 ? <ProductItem key={product._id} product={product} /> : null
                         })

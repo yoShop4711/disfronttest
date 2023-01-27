@@ -21,7 +21,7 @@ function DeliveredOrder({item, amount, status, updated}) {
 
 
         if(item._id) {
-            products.forEach(product => {
+            products.products.forEach(product => {
     
                 if(product._id === item._id) setProds(product)
     

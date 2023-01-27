@@ -19,7 +19,7 @@ function FullOrders({prods, items}) {
     useEffect(() => {
 
         if(prods._id) {
-            products.forEach((product) => {
+            products.products.forEach((product) => {
                 if(product._id === prods._id) setGoods(product)
 
             })

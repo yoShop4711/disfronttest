@@ -49,7 +49,7 @@ function MyOrders() {
 
   const pageCount = items ? Math.ceil(items.length / pageSize) : 0;
 
-  if (pageCount === 1) return null;
+
 
   const pages = _.range(1, pageCount + 1);
 

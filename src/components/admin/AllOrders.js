@@ -24,7 +24,7 @@ function Orders({order, amount, status, user, updated}) {
 
     if(order._id) {
 
-products.forEach(product => {
+products.products.forEach(product => {
     if(product._id === order._id) setSingleOrders(product)
 })
 

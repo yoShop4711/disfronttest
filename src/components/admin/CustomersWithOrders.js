@@ -58,7 +58,7 @@ function CustomersWithOrders() {
 
     const pageCount = uniques ? Math.ceil(uniques.length / pageSize) : 0;
 
-  if (pageCount === 1) return null;
+  
 
   const pages = _.range(1, pageCount + 1);
 
