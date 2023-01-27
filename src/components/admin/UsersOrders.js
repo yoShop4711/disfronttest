@@ -29,7 +29,7 @@ function UsersOrders() {
   useEffect(() => {
     const getOrders = async () => {
       const res = await axios.get(
-        `/cart/buyer_orders/${location.state.identifier}`,
+        `https://newyoshopapi.onrender.com/cart/buyer_orders/${location.state.identifier}`,
         
         {
           headers: {

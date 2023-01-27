@@ -23,7 +23,7 @@ function MyWishlists() {
 
    useEffect(() => {
     const getWishLists = async() => {
-        const res = await axios.get('/wish/user_wishlist', {
+        const res = await axios.get('https://newyoshopapi.onrender.com/wish/user_wishlist', {
             headers: {
                 Authorization: `Bearer ${token}`
             }

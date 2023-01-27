@@ -22,7 +22,7 @@ function ShowUsers() {
     const showUsers = async () => {
       if (isAdmin) {
         const res = await axios.get(
-          "/auth/show_users",
+          "https://newyoshopapi.onrender.com/auth/show_users",
           {
             headers: {
               Authorization: `Bearer ${token}`,

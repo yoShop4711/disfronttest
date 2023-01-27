@@ -45,7 +45,7 @@ function CreateProduct() {
     formData.append("categor", product.categor);
     formData.append("productPrice", product.productPrice);
 
-    const res = await axios.post("/api/create_product", formData, {
+    const res = await axios.post("https://newyoshopapi.onrender.com/api/create_product", formData, {
       headers: { Authorization: `Bearer ${token}` },
     });
 

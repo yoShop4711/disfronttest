@@ -23,7 +23,7 @@ function AllMyOrders() {
 
    useEffect(() => {
      const getAllMyOrders = async () => {
-       const res = await axios.get("/cart/show_user_carts", {
+       const res = await axios.get("https://newyoshopapi.onrender.com/cart/show_user_carts", {
          headers: {
            Authorization: `Bearer ${token}`,
          },

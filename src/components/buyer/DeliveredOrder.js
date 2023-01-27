@@ -89,24 +89,6 @@ function DeliveredOrder({item, amount, status, updated}) {
 
 
     
-//     <div className="product_card">
-
-// <img  src={`data:image/jpg;base64, ${base64String}`} alt={prods.productName} />
-
-
-//         <div className="product_box">
-//         <h2>Seller: <em> {merchant.fullname} </em></h2>
-//         <h3>Product: <em> {prods.productName} </em> </h3>
-//         <h5>Price: <em>MK{amount}</em></h5>
-//         <h5 >status: <em> {status} </em></h5>
-//         <h5>number of products: <em>{item.count}</em> </h5>
-//         <small>Last updated {moment(updated).fromNow()}</small>
-
-//         </div>
-    
-    
-    
-//     </div>
     
     )
 }

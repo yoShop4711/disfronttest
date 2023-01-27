@@ -26,7 +26,7 @@ function SellerProducts() {
     useEffect(() => {
         const sellerProds = async() => {
 
-            const res = await axios.get('/api/seller_products', {
+            const res = await axios.get('https://newyoshopapi.onrender.com/api/seller_products', {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }

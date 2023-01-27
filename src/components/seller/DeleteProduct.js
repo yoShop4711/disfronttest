@@ -1,4 +1,3 @@
-
 import { useParams } from "react-router-dom"
 import axios from "axios"
 import { GlobalState } from "../../GlobalState"
@@ -17,7 +16,7 @@ function DeleteProduct() {
 
     const deleteProduct = async() => {
         
-         const res = await axios.delete(`/api/delete_product/${id}`, {
+         const res = await axios.delete(`https://newyoshopapi.onrender.com/api/delete_product/${id}`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }

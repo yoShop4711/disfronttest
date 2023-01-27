@@ -27,7 +27,7 @@ function ShowMerchantProducts() {
 
         const merchantProducts = async() => {
 
-            const res = await axios.get(`/api/see_seller_products/${id}`, {
+            const res = await axios.get(`https://newyoshopapi.onrender.com/api/see_seller_products/${id}`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }

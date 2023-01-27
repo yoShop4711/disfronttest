@@ -15,7 +15,7 @@ function DeleteUser() {
 
     const deleteUser = async() => {
         
-         const res = await axios.delete(`/auth/delete_user/${id}`, {
+         const res = await axios.delete(`https://newyoshopapi.onrender.com/auth/delete_user/${id}`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }

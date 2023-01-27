@@ -17,7 +17,7 @@ function ProductsSApi() {
     const [paginated, setPaginated] = useState();
     const [currentPage, setCurrentPage] = useState(1);
 
-    const res =  axios.get(`/api/show_products?${categor}&${sort}&title[regex]=${search}`) 
+    const res =  axios.get(`https://newyoshopapi.onrender.com/api/show_products?${categor}&${sort}&title[regex]=${search}`) 
     useEffect( () => {
         try  {
     

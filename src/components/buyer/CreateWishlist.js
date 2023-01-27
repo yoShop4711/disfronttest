@@ -35,7 +35,7 @@ function CreateWishlist() {
     formData.append("productDescription", wishlist.productDescription);
     formData.append("productImage", productImage);
 
-    const res = await axios.post("/wish/create_wishlist", formData, {
+    const res = await axios.post("https://newyoshopapi.onrender.com/wish/create_wishlist", formData, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

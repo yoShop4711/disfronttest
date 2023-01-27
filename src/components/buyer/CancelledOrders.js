@@ -23,7 +23,7 @@ function CancelledOrders() {
 
    useEffect(() => {
      const getCancelled = async () => {
-       const res = await axios.get("/cart/show_user_cancelled_carts", {
+       const res = await axios.get("https://newyoshopapi.onrender.com/cart/show_user_cancelled_carts", {
          headers: {
            Authorization: `Bearer ${token}`,
          },

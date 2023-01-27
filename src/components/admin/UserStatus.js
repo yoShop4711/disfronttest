@@ -14,7 +14,7 @@ function UserStatus() {
 
             const changeStatus = async () => {
                 
-                const res = await axios.put(`/auth/change_role/${id}`, {role}, {
+                const res = await axios.put(`https://newyoshopapi.onrender.com/auth/change_role/${id}`, {role}, {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }
